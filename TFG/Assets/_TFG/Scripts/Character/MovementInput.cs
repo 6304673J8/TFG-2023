@@ -14,7 +14,7 @@ public class MovementInput : MonoBehaviour
     public bool blockRotationPlayer;
     [Space]
 
-    public float desiredRotationSpeed = 0.1f;
+    public float desiredRotationSpeed = 0.05f;
     //public Animator anim;
     public float Speed;
     public float allowPlayerRotation = 0.1f;
