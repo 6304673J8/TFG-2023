@@ -9,6 +9,7 @@ public class ColorPickupEvents : MonoBehaviour
     public event EventHandler onColorPicked;
 
     public GameObject ColorTest;
+    public GameObject BodyLayer;
 
     private void Start()
     {
@@ -49,6 +50,10 @@ public class ColorPickupEvents : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pick_Color"))
         {
+            Debug.Log(BodyLayer.layer);
+            Debug.Log(other.gameObject.layer);
+            Debug.Log("End Of Debug");
+            BodyLayer.layer = other.gameObject.layer;
             Debug.Log("Collided With Pickeable");
             onColorPicked?.Invoke(this, EventArgs.Empty);
             other.gameObject.SetActive(false);
