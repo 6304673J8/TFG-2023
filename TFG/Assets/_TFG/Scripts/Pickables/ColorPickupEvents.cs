@@ -47,10 +47,11 @@ public class ColorPickupEvents : MonoBehaviour
     //Find A Proper Way Of Doing This Once The Project Is Accepted!!!!!
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Pick_Color")
+        if (other.gameObject.CompareTag("Pick_Color"))
         {
             Debug.Log("Collided With Pickeable");
             onColorPicked?.Invoke(this, EventArgs.Empty);
+            other.gameObject.SetActive(false);
         }
         else
         {

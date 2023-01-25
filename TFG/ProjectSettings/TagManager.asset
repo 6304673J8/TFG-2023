@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Steal_Color
+  - Set_Color
+  - Pick_Color
+  - Horn_Color
   layers:
   - Default
   - TransparentFX
@@ -11,10 +15,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Entity_Black
+  - Entity_Blue
+  - Entity_Red
+  - Entity_White
   - 
   - 
   - 
