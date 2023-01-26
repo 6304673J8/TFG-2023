@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-//This Suscriber Works With Color Pickup In Order To Change The Players Color
+//This Suscriber Works With Color Pickup Events In Order To Change The Players Color
 public class ColorPickedSuscriber : MonoBehaviour
 {
     [ColorUsage(true, true)]
