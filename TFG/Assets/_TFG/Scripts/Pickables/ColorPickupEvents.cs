@@ -35,7 +35,7 @@ public class ColorPickupEvents : MonoBehaviour
     //Update Testings
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             onColorPicked?.Invoke(this, EventArgs.Empty);
         }
@@ -43,7 +43,7 @@ public class ColorPickupEvents : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ColorTest.gameObject.SetActive(true);
-        }
+        }*/
     }
     //Find A Proper Way Of Doing This Once The Project Is Accepted!!!!!
     private void OnTriggerEnter(Collider other)
