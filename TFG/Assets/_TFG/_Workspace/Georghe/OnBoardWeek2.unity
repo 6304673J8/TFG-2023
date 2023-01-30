@@ -1251,7 +1251,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204680543}
-  m_LocalRotation: {x: 0.32232577, y: 0.00000001109624, z: -0.000000003778254, w: 0.9466288}
+  m_LocalRotation: {x: 0.32232574, y: -0.000000030315487, z: 0.000000010322379, w: 0.9466288}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1555,7 +1555,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295490221}
-  m_LocalRotation: {x: 0.34042525, y: -0.0000000228801, z: 0.000000008283737, w: 0.9402716}
+  m_LocalRotation: {x: 0.34042525, y: 0.00000002288009, z: -0.000000008283735, w: 0.9402716}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4010,7 +4010,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841061731}
-  m_LocalRotation: {x: 0.3223258, y: 0.000000030315487, z: -0.000000010322381, w: 0.94662887}
+  m_LocalRotation: {x: 0.32232577, y: -0.000000041411727, z: 0.000000014100635, w: 0.94662887}
   m_LocalPosition: {x: 0, y: 2.671, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12774,7 +12774,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903490869}
-  m_LocalRotation: {x: 0.3041613, y: -0.000000016391153, z: 0.000000005233515, w: 0.95262057}
+  m_LocalRotation: {x: 0.3041613, y: 0.000000016391153, z: -0.000000005233515, w: 0.95262057}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14747,11 +14747,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickable_Blue
       objectReference: {fileID: 0}
-    - target: {fileID: 2307347974996376888, guid: edd1fd381d97e8c4593f7a00f2f4ce25,
-        type: 3}
-      propertyPath: m_TagString
-      value: Pick_Color_Blue
-      objectReference: {fileID: 0}
     - target: {fileID: 2307347974996376889, guid: edd1fd381d97e8c4593f7a00f2f4ce25,
         type: 3}
       propertyPath: m_RootOrder
@@ -14821,11 +14816,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickable_Green
       objectReference: {fileID: 0}
-    - target: {fileID: 8223493904255586236, guid: b79b52b27b8146147b7ce56e3bdfd6dd,
-        type: 3}
-      propertyPath: m_TagString
-      value: Pick_Color_Green
-      objectReference: {fileID: 0}
     - target: {fileID: 8223493904255586237, guid: b79b52b27b8146147b7ce56e3bdfd6dd,
         type: 3}
       propertyPath: m_RootOrder
@@ -14894,11 +14884,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pickable_Red
-      objectReference: {fileID: 0}
-    - target: {fileID: 828680912392123216, guid: 816c62bb2a84dda46892c304035b6b47,
-        type: 3}
-      propertyPath: m_TagString
-      value: Pick_Color_Red
       objectReference: {fileID: 0}
     - target: {fileID: 828680912392123217, guid: 816c62bb2a84dda46892c304035b6b47,
         type: 3}

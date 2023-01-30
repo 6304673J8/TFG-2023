@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 8223493904255586233}
   m_Layer: 10
   m_Name: Pickable_Green
-  m_TagString: Pick_Color
+  m_TagString: Pick_Color_Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

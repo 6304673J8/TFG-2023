@@ -31,6 +31,8 @@ public class ColorPickedSuscriber : MonoBehaviour
         }
     }
 
+    #region Events:PickedColor
+
     //Blue
     private void ColorPickedEvent_OnColorPickedBlue(object sender, EventArgs e)
     {
@@ -63,4 +65,5 @@ public class ColorPickedSuscriber : MonoBehaviour
         ColorPickupEvents colorPickedEvents = GetComponent<ColorPickupEvents>();
         colorPickedEvents.onColorGreenPicked += ColorPickedEvent_OnColorPickedGreen;
     }
+    #endregion
 }

@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 2307347974996376893}
   m_Layer: 7
   m_Name: Pickable_Blue
-  m_TagString: Pick_Color
+  m_TagString: Pick_Color_Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
