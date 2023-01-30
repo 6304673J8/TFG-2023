@@ -8,6 +8,9 @@ TagManager:
   - Set_Color
   - Pick_Color
   - Horn_Color
+  - Pick_Color_Blue
+  - Pick_Color_Red
+  - Pick_Color_Green
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Entity_Blue
   - Entity_Red
   - Entity_White
-  - 
+  - Entity_Green
   - 
   - 
   - 
