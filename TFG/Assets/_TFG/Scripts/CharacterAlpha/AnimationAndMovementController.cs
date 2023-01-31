@@ -7,31 +7,39 @@ using UnityEngine.InputSystem;
 public class AnimationAndMovementController : MonoBehaviour
 {
     //Declare Reference Variables
-    PlayerInputs playerInputs;
-    CharacterController characterController;
-    Animator animator;
+    private PlayerInputs _playerInputs;
+    private CharacterController _characterController;
+    private Animator _animator;
 
     //Variables To Store Optimized Setter/Getter parameter IDs
-    int isWalkingHash;
-    int isRunningHash;
+    int _isWalkingHash;
+    int _isRunningHash;
 
     //Variables To Store Player Input Values
-    Vector2 currentMovementInput;
-    Vector3 currentMovement;
-    Vector3 currentRunMovement;
-    bool isMovementPressed;
-    bool isRunPressed;
-    float rotationFactorPerFrame = 1.0f;
-    float runMultiplier = 6.0f;
+    Vector2 _currentMovementInput;
+    Vector3 _currentMovement;
+    Vector3 _currentRunMovement;
+    bool _isMovementPressed;
+    bool _isRunPressed;
 
+    //Constants
+    private float _rotationFactorPerFrame = 15.0f;
+    private float _runMultiplier = 3.0f;
+    private int _zero = 0;
+    private float _gravity = -9.8f;
+    private float groundedGravity = -0.05f;
+    
     //Jump Variables
-    bool isJumpPressed = false;
+    bool _isJumpPressed = false;
 
     private void Awake()
     {
         //Set Reference Variables
-        playerInputs = new PlayerInputs();
-        characterController = GetComponent<CharacterController>();
+        _playerInputs = new PlayerInputs();
+        _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
+        _isWalkingHash = Animator.StringToHash("isWalking");
+        _isRunningHash = Animator.StringToHash("isRunning");
         /* Once Final Character Is Ready
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
@@ -40,96 +48,96 @@ public class AnimationAndMovementController : MonoBehaviour
 
         //Ask If This Is Ideal Or Better To Create A Manager!!!
         //Set The Player Input Callbacks
-        playerInputs.CharacterControls.Move.started += OnMovementInput;
-        playerInputs.CharacterControls.Move.performed += OnMovementInput;
-        playerInputs.CharacterControls.Move.canceled += OnMovementInput;
+        _playerInputs.CharacterControls.Move.started += OnMovementInput;
+        _playerInputs.CharacterControls.Move.performed += OnMovementInput;
+        _playerInputs.CharacterControls.Move.canceled += OnMovementInput;
 
-        playerInputs.CharacterControls.Run.started += OnRunInput;
-        playerInputs.CharacterControls.Run.canceled += OnRunInput;
+        _playerInputs.CharacterControls.Run.started += OnRunInput;
+        _playerInputs.CharacterControls.Run.canceled += OnRunInput;
 
-        playerInputs.CharacterControls.Jump.started += OnJumpInput;
-        playerInputs.CharacterControls.Jump.canceled += OnJumpInput;
+        _playerInputs.CharacterControls.Jump.started += OnJumpInput;
+        _playerInputs.CharacterControls.Jump.canceled += OnJumpInput;
     }
 
     private void OnJumpInput(InputAction.CallbackContext context)
     {
-        isJumpPressed = context.ReadValueAsButton();
-        Debug.Log(isJumpPressed);
+        _isJumpPressed = context.ReadValueAsButton();
+        Debug.Log(_isJumpPressed);
     }
 
     void OnRunInput(InputAction.CallbackContext context)
     {
-        isRunPressed = context.ReadValueAsButton();
+        _isRunPressed = context.ReadValueAsButton();
     }
 
     void OnMovementInput (InputAction.CallbackContext context)
     {
-        currentMovementInput = context.ReadValue<Vector2>();
-        currentMovement.x = currentMovementInput.x;
-        currentMovement.z = currentMovementInput.y;
-        currentRunMovement.x = currentMovementInput.x * runMultiplier;
-        currentRunMovement.y = currentMovementInput.y * runMultiplier;
-        currentRunMovement.z = currentMovementInput.y * runMultiplier;
-        isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
+        _currentMovementInput = context.ReadValue<Vector2>();
+        _currentMovement.x = _currentMovementInput.x;
+        _currentMovement.z = _currentMovementInput.y;
+        _currentRunMovement.x = _currentMovementInput.x * _runMultiplier;
+        _currentRunMovement.y = _currentMovementInput.y * _runMultiplier;
+        _currentRunMovement.z = _currentMovementInput.y * _runMultiplier;
+        _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
     void HandleRotation()
     {
         Vector3 positionToLookAt;
         //Where Our Character Should Reposition To
-        positionToLookAt.x = currentMovement.x;
+        positionToLookAt.x = _currentMovement.x;
         positionToLookAt.y = 0.0f;
-        positionToLookAt.z = currentMovement.z;
+        positionToLookAt.z = _currentMovement.z;
         //The Current Rotation Of Our Character
         Quaternion currentRotation = transform.rotation;
 
-        if (isMovementPressed)
+        if (_isMovementPressed)
         {
             //Creates A New Rotations Based On The Input That The Player Is Pressing
             Quaternion targetRotation = Quaternion.LookRotation(positionToLookAt);
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationFactorPerFrame * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _rotationFactorPerFrame * Time.deltaTime);
         }
     }
 
     void HandleAnimation()
     {
         //Get Parameter Values From Animator
-        bool isWalking = animator.GetBool(isWalkingHash);
-        bool isRunning = animator.GetBool(isRunningHash);
+        bool isWalking = _animator.GetBool(_isWalkingHash);
+        bool isRunning = _animator.GetBool(_isRunningHash);
 
         //Start Walking Animation If MovementPressed Is True And Not Already Walking Else Viceversa
-        if (isMovementPressed && !isWalking)
+        if (_isMovementPressed && !isWalking)
         {
-            animator.SetBool("isWalking", true);
+            _animator.SetBool("isWalking", true);
         }
-        else if (!isMovementPressed && isWalking)
+        else if (!_isMovementPressed && isWalking)
         {
-            animator.SetBool("isWalking", false);
+            _animator.SetBool("isWalking", false);
         }
 
-        if ((isMovementPressed && isRunPressed) && !isRunning)
+        if ((_isMovementPressed && _isRunPressed) && !isRunning)
         {
-            animator.SetBool(isRunningHash, true);
+            _animator.SetBool(_isRunningHash, true);
         }
-        else if ((!isMovementPressed || !isRunPressed) && isRunning)
+        else if ((!_isMovementPressed || !_isRunPressed) && isRunning)
         {
-            animator.SetBool(isRunningHash, false);
+            _animator.SetBool(_isRunningHash, false);
         }
     }
 
     void HandleGravity()
     {
-        if (characterController.isGrounded)
+        if (_characterController.isGrounded)
         {
             float groundedGravity = -.05f;
-            currentMovement.y = groundedGravity;
-            currentRunMovement.y = groundedGravity;
+            _currentMovement.y = groundedGravity;
+            _currentRunMovement.y = groundedGravity;
         }
         else
         {
             float gravity = -9.8f;
-            currentMovement.y += gravity;
-            currentRunMovement.y += gravity;
+            _currentMovement.y += gravity;
+            _currentRunMovement.y += gravity;
         }
     }
 
@@ -140,25 +148,25 @@ public class AnimationAndMovementController : MonoBehaviour
         HandleRotation();
         //HandleAnimation();
 
-        if (isRunPressed)
+        if (_isRunPressed)
         {
-            characterController.Move(currentMovement * Time.deltaTime);
+            _characterController.Move(_currentMovement * Time.deltaTime);
         }
         else
         {
-            characterController.Move(currentMovement * Time.deltaTime);
+            _characterController.Move(_currentMovement * Time.deltaTime);
         }
     }
 
     private void OnEnable()
     {
         // enable the character controls action map
-        playerInputs.CharacterControls.Enable();
+        _playerInputs.CharacterControls.Enable();
     }
 
     private void OnDisable()
     {
         // disable the character controls action map
-        playerInputs.CharacterControls.Disable();
+        _playerInputs.CharacterControls.Disable();
     }
 }
