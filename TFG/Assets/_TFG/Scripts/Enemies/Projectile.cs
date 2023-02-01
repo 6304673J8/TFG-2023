@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
@@ -24,6 +25,7 @@ public class Projectile : MonoBehaviour
         if(other.tag == "Player")
         {
             Destroy(gameObject);
+
         }
     }
 }
