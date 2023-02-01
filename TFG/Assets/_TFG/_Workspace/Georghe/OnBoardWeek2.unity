@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 64549228}
   - component: {fileID: 64549227}
   m_Layer: 0
-  m_Name: ParticleSystemPintura (2)
+  m_Name: ParticleSystem_Pintura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20393,7 +20393,7 @@ GameObject:
   - component: {fileID: 639551744528561110}
   - component: {fileID: 639551744528561109}
   m_Layer: 8
-  m_Name: BocaIncendio (2)
+  m_Name: BocaIncendio
   m_TagString: Blanco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23348,6 +23348,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297603977547693916}
   m_Mesh: {fileID: -1658128842733537844, guid: 66cfccf26b36de644a4867668b62c98d, type: 3}
+--- !u!1001 &4348255527234784792
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1924709518280917528, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_Name
+      value: FireHydrant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.958084
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.01887
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.664421
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7086357
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7055253
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0046000993
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.006962594
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.685
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 36.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647677908632281986, guid: ead5de2391e7da14fbf7871cf01aa97f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -37.687
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ead5de2391e7da14fbf7871cf01aa97f, type: 3}
 --- !u!143 &4762985444818540704
 CharacterController:
   m_ObjectHideFlags: 0
