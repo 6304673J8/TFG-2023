@@ -27,7 +27,12 @@ public class AnimationAndMovementController : MonoBehaviour
 
     //Constants
     private float _rotationFactorPerFrame = 15.0f;
-    private float _runMultiplier = 3.0f;
+    [SerializeField]
+    private float _runBaseSpeed = 2.0f;
+
+    //Original value = 3.0f
+    [SerializeField]
+    private float _runMultiplier = 5.0f;
     private int _zero = 0;
 
     //Gravity 
@@ -41,7 +46,10 @@ public class AnimationAndMovementController : MonoBehaviour
     bool _isJumpPressed = false;
     bool _isJumpAnimating = false;
     float _initialJumpVelocity;
-    float _maxJumpHeight = 4.0f;
+    //Original value = 4.0f
+    [SerializeField]
+    float _maxJumpHeight = 2.0f;
+    [SerializeField]
     float _maxJumpTime = 0.5f;
 
     //Jumping Extras Test
@@ -49,6 +57,7 @@ public class AnimationAndMovementController : MonoBehaviour
     Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
     Dictionary<int, float> _initialJumpGravities = new Dictionary<int, float>();
     Coroutine _currentJumpResetRoutine = null;
+    
     private void Awake()
     {
         //Set Reference Variables
@@ -81,8 +90,8 @@ public class AnimationAndMovementController : MonoBehaviour
         _gravity = (-2 * _maxJumpHeight) / Mathf.Pow(_timeToApex, 2);
         _initialJumpVelocity = (2 * _maxJumpHeight) / _timeToApex;
 
-        float _secondJumpGravity = (-2 * (_maxJumpHeight + 12)) / Mathf.Pow((_timeToApex * 1.25f), 2);
-        float _secondJumpInitialVelocity = (2 * (_maxJumpHeight + 12)) / (_timeToApex * 1.25f);
+        float _secondJumpGravity = (-2 * (_maxJumpHeight + 2)) / Mathf.Pow((_timeToApex * 1.25f), 2);
+        float _secondJumpInitialVelocity = (2 * (_maxJumpHeight + 2)) / (_timeToApex * 1.25f);
         float _thirdJumpGravity = (-2 * (_maxJumpHeight + 4)) / Mathf.Pow((_timeToApex * 1.5f), 2);
         float _thirdJumpInitialVelocity = (2 * (_maxJumpHeight + 4)) / (_timeToApex * 1.5f);
 
@@ -110,8 +119,8 @@ public class AnimationAndMovementController : MonoBehaviour
     void OnMovementInput (InputAction.CallbackContext context)
     {
         _currentMovementInput = context.ReadValue<Vector2>();
-        _currentMovement.x = _currentMovementInput.x;
-        _currentMovement.z = _currentMovementInput.y;
+        _currentMovement.x = _currentMovementInput.x * _runBaseSpeed;
+        _currentMovement.z = _currentMovementInput.y * _runBaseSpeed;
         _currentRunMovement.x = _currentMovementInput.x * _runMultiplier;
         _currentRunMovement.z = _currentMovementInput.y * _runMultiplier;
         _isMovementPressed = _currentMovementInput.x != _zero || _currentMovementInput.y != _zero;
