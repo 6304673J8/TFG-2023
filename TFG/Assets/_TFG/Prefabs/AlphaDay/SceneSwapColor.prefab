@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4650052175856193892}
   m_Layer: 7
   m_Name: SceneSwapColor
-  m_TagString: Untagged
+  m_TagString: Horn_Color
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,6 +182,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 892552300092367126, guid: 3fab22e2124f3144d9343a9bfe84c9e6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 892552300483812369, guid: 3fab22e2124f3144d9343a9bfe84c9e6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 892552301009900206, guid: 3fab22e2124f3144d9343a9bfe84c9e6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 892552301164903855, guid: 3fab22e2124f3144d9343a9bfe84c9e6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 892552301228478782, guid: 3fab22e2124f3144d9343a9bfe84c9e6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 892552301545385930, guid: 3fab22e2124f3144d9343a9bfe84c9e6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 892552301814519251, guid: 3fab22e2124f3144d9343a9bfe84c9e6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 892552301869682956, guid: 3fab22e2124f3144d9343a9bfe84c9e6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fab22e2124f3144d9343a9bfe84c9e6, type: 3}
 --- !u!4 &4624035279736153374 stripped
@@ -266,6 +306,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487714382052357, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487714577187125, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487715245667715, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487716022091607, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487716053713567, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487716161760250, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
       objectReference: {fileID: 0}
     - target: {fileID: 8331947552325537028, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
         type: 3}
@@ -356,6 +426,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487714382052357, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487714577187125, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487715245667715, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487716022091607, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487716053713567, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363487716161760250, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Horn_Color
       objectReference: {fileID: 0}
     - target: {fileID: 8331947552325537028, guid: 9e80b7a00f56c094fa7d04a2092e9c1c,
         type: 3}

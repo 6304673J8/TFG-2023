@@ -8,9 +8,9 @@ public class ReturnColorsBack : MonoBehaviour
     Renderer[] characterMaterials;
     public Color[] hornColors;
 
-    private void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (collision.gameObject.CompareTag("Player"))
             ChangeMaterialSettings(0);
     }
     void ChangeMaterialSettings(int index)
