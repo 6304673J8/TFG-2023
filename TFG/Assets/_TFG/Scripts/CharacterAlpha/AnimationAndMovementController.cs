@@ -13,7 +13,9 @@ public class AnimationAndMovementController : MonoBehaviour
 
     //Variables To Store Optimized Setter/Getter parameter IDs
     int _isWalkingHash;
-    int _isRunningHash;
+    int _isDashingHash;
+    int _isJumpingHash;
+    int _isIdleHash;
 
     //Variables To Store Player Input Values
     Vector2 _currentMovementInput;
@@ -46,13 +48,12 @@ public class AnimationAndMovementController : MonoBehaviour
         //Set Reference Variables
         _playerInputs = new PlayerInputs();
         _characterController = GetComponent<CharacterController>();
-        /* Once Final Character Is Ready
-        animator = GetComponent<Animator>();
-        isWalkingHash = Animator.StringToHash("isWalking");
-        isRunningHash = Animator.StringToHash("isRunning");
-        */
+        _animator = GetComponent<Animator>();
+        _isWalkingHash = Animator.StringToHash("isWalking");
+        _isDashingHash = Animator.StringToHash("isDashing");
+        _isJumpingHash = Animator.StringToHash("isJumping");
+        _isIdleHash = Animator.StringToHash("isIdle");
 
-        //Ask If This Is Ideal Or Better To Create A Manager!!!
         //Set The Player Input Callbacks
         //WALK
         _playerInputs.CharacterControls.Move.started += OnMovementInput;
@@ -118,8 +119,10 @@ public class AnimationAndMovementController : MonoBehaviour
     void HandleAnimation()
     {
         //Get Parameter Values From Animator
-        bool isWalking = _animator.GetBool(_isWalkingHash);
-        bool isRunning = _animator.GetBool(_isRunningHash);
+        bool isWalking = _animator.GetBool("isWalking");
+        bool isRunning = _animator.GetBool("isJumping");
+        bool isDashing = _animator.GetBool("isDashing");
+        bool isIdle = _animator.GetBool("isIdle");
 
         //Start Walking Animation If MovementPressed Is True And Not Already Walking Else Viceversa
         if (_isMovementPressed && !isWalking)
@@ -131,14 +134,23 @@ public class AnimationAndMovementController : MonoBehaviour
             _animator.SetBool(_isWalkingHash, false);
         }
 
-        if ((_isMovementPressed && _isRunPressed) && !isRunning)
+        /*if ((_isMovementPressed && _isJumpPressed) && !isRunning)
         {
-            _animator.SetBool(_isRunningHash, true);
+            _animator.SetBool(_isJumpingHash, true);
         }
-        else if ((!_isMovementPressed || !_isRunPressed) && isRunning)
+        else if ((!_isMovementPressed || !_isJumpPressed) && isRunning)
         {
             _animator.SetBool(_isRunningHash, false);
         }
+
+        if ((_isMovementPressed && _isJumpPressed) && !isRunning)
+        {
+            _animator.SetBool(_isRunningHash, true);
+        }
+        else if ((!_isMovementPressed || !_isJumpPressed) && isRunning)
+        {
+            _animator.SetBool(_isRunningHash, false);
+        }*/
     }
 
     void HandleJump()
@@ -172,21 +184,21 @@ public class AnimationAndMovementController : MonoBehaviour
             _currentMovement.y = _nextYVelocity;
             _currentRunMovement.y = _nextYVelocity;
         }
-        else
+        /*else
         {
             float _previousYVelocity = _currentMovement.y;
             float _newYVelocity = _currentMovement.y + (_gravity * Time.deltaTime);
             float _nextYVelocity = (_previousYVelocity + _newYVelocity) * .5f;
             _currentMovement.y += _nextYVelocity;
             _currentRunMovement.y += _nextYVelocity;
-        }
+        }*/
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleRotation();
-        //HandleAnimation();
+        HandleAnimation();
 
         if (_isRunPressed)
         {

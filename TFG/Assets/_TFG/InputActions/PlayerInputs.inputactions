@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Run",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "b064a4ed-3c63-491d-a362-ae14a7010837",
                     "expectedControlType": "Button",
@@ -27,6 +27,15 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "6e1c7624-e4fd-4407-993a-0687efb5be17",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "b1ee01cd-5b2d-4695-9ac2-0f56bcff81a3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -158,11 +167,11 @@
                 {
                     "name": "",
                     "id": "51402c35-65a3-410f-b348-186eaaba5bf4",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Run",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -173,7 +182,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Run",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -196,6 +205,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1b5e7c8-e839-4e48-b9e4-911adf71dea6",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df91926d-aa44-4f3a-bf4e-1a55b747d3c8",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
