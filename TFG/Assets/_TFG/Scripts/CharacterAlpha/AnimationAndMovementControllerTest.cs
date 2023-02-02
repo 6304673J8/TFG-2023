@@ -43,6 +43,8 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     float _maxJumpHeight = 2.0f;
     float _maxJumpTime = 0.5f;
 
+    private float timer;
+
     private void Awake()
     {
         //Set Reference Variables
@@ -156,15 +158,17 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     void HandleJump()
     {
         if (!_isJumping && _characterController.isGrounded && _isJumpPressed)
-        {
+        {          
             _isJumping = true;
             _currentMovement.y = _initialJumpVelocity * 0.5f;
             _currentRunMovement.y = _initialJumpVelocity * 0.5f;
+            
         }
-        else if (!_isJumpPressed && _isJumping && !_characterController.isGrounded)
+        else if (_isJumping && !_characterController.isGrounded)
         {
             _isJumping = false;
         }
+        
     }
     void HandleGravity()
     {
