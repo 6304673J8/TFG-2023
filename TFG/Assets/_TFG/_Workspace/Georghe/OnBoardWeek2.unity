@@ -1353,7 +1353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204680543}
-  m_LocalRotation: {x: 0.31768647, y: 0.1600308, z: -0.054490242, w: 0.9330039}
+  m_LocalRotation: {x: 0.31768647, y: 0.16003084, z: -0.05449027, w: 0.9330039}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1689,7 +1689,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295490221}
-  m_LocalRotation: {x: 0.33552545, y: 0.15895608, z: -0.05755003, w: 0.9267382}
+  m_LocalRotation: {x: 0.33552545, y: 0.15895607, z: -0.057550024, w: 0.9267382}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5013,7 +5013,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841061731}
-  m_LocalRotation: {x: 0.31768644, y: 0.1600308, z: -0.054490253, w: 0.93300396}
+  m_LocalRotation: {x: 0.31768644, y: 0.16003087, z: -0.05449028, w: 0.93300396}
   m_LocalPosition: {x: -0.08892679, y: 1.3487, z: -3.0014305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14086,7 +14086,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903490869}
-  m_LocalRotation: {x: 0.29978344, y: 0.16104367, z: -0.05141948, w: 0.9389094}
+  m_LocalRotation: {x: 0.29978347, y: 0.16104373, z: -0.051419497, w: 0.9389094}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16304,6 +16304,7 @@ GameObject:
   - component: {fileID: 919132148905206962}
   - component: {fileID: 919132148905206961}
   - component: {fileID: 919132148905206960}
+  - component: {fileID: 919132148905206963}
   m_Layer: 0
   m_Name: BunnyWithBrushTPose
   m_TagString: Untagged
@@ -16368,6 +16369,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.015, z: 0}
+--- !u!114 &919132148905206963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148905206959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015a9ecc053b38741b5616f777b4fc8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &964773201727697300
 GameObject:
   m_ObjectHideFlags: 0
