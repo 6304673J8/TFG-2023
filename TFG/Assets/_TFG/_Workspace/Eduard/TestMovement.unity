@@ -1353,7 +1353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204680543}
-  m_LocalRotation: {x: 0.32229108, y: 0.013879907, z: -0.004726087, w: 0.94652706}
+  m_LocalRotation: {x: 0.31768647, y: 0.1600308, z: -0.054490242, w: 0.9330039}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1689,7 +1689,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295490221}
-  m_LocalRotation: {x: 0.34038866, y: 0.013786708, z: -0.004991476, w: 0.9401705}
+  m_LocalRotation: {x: 0.33552545, y: 0.15895608, z: -0.05755003, w: 0.9267382}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5013,8 +5013,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841061731}
-  m_LocalRotation: {x: 0.32229108, y: 0.013879907, z: -0.004726087, w: 0.94652706}
-  m_LocalPosition: {x: -0.0879654, y: 2.5, z: -2.9987102}
+  m_LocalRotation: {x: 0.31768644, y: 0.1600308, z: -0.054490253, w: 0.93300396}
+  m_LocalPosition: {x: -0.08892679, y: 1.3487, z: -3.0014305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13426,8 +13426,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 543450652908633621}
+  m_Follow: {fileID: 543450652908633621}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 42
@@ -13520,7 +13520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644543893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0879654, y: 2.5, z: -2.9987102}
+  m_LocalPosition: {x: -0.08892679, y: 1.3487, z: -3.0014305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14086,7 +14086,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903490869}
-  m_LocalRotation: {x: 0.3041286, y: 0.013967793, z: -0.004459764, w: 0.95251817}
+  m_LocalRotation: {x: 0.29978347, y: 0.16104373, z: -0.051419497, w: 0.9389094}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16302,8 +16302,8 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652908633621}
   - component: {fileID: 919132148905206962}
-  - component: {fileID: 919132148905206961}
   - component: {fileID: 919132148905206960}
+  - component: {fileID: 919132148905206963}
   m_Layer: 0
   m_Name: BunnyWithBrushTPose
   m_TagString: Untagged
@@ -16331,21 +16331,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &919132148905206961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148905206959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 471266a6384510e40bb1217c06618028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isRunPressed: 0
-  _isJumping: 0
-  _isJumpPressed: 0
 --- !u!143 &919132148905206962
 CharacterController:
   m_ObjectHideFlags: 0
@@ -16364,6 +16349,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.015, z: 0}
+--- !u!114 &919132148905206963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148905206959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcffcdc8ce2852b46a402ec218e4a12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isRunPressed: 0
+  _isJumping: 0
+  _isJumpPressed: 0
 --- !u!1 &964773201727697300
 GameObject:
   m_ObjectHideFlags: 0

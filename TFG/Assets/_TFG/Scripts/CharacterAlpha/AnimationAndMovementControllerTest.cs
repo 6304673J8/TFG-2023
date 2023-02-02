@@ -27,7 +27,7 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
 
     //Constants
     private float _rotationFactorPerFrame = 15.0f;
-    private float _runMultiplier = 3.0f;
+    private float _runMultiplier = 5.0f;
     private int _zero = 0;
 
     //Gravity 
@@ -40,7 +40,7 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     [SerializeField]
     bool _isJumpPressed = false;
     float _initialJumpVelocity;
-    float _maxJumpHeight = 4.0f;
+    float _maxJumpHeight = 2.0f;
     float _maxJumpTime = 0.5f;
 
     private void Awake()
@@ -90,8 +90,8 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     void OnMovementInput (InputAction.CallbackContext context)
     {
         _currentMovementInput = context.ReadValue<Vector2>();
-        _currentMovement.x = _currentMovementInput.x;
-        _currentMovement.z = _currentMovementInput.y;
+        _currentMovement.x = _currentMovementInput.x * 2.0f;
+        _currentMovement.z = _currentMovementInput.y * 2.0f;
         _currentRunMovement.x = _currentMovementInput.x * _runMultiplier;
         _currentRunMovement.z = _currentMovementInput.y * _runMultiplier;
         _isMovementPressed = _currentMovementInput.x != _zero || _currentMovementInput.y != _zero;
@@ -180,7 +180,7 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
         {
             float _previousYVelocity = _currentMovement.y;
             float _newYVelocity = _currentMovement.y + (_gravity * _fallMultiplier * Time.deltaTime);
-            float _nextYVelocity = Mathf.Max((_previousYVelocity + _newYVelocity) * .5f, -20.0f);
+            float _nextYVelocity = Mathf.Max((_previousYVelocity + _newYVelocity) * .5f, -10.0f);
             _currentMovement.y = _nextYVelocity;
             _currentRunMovement.y = _nextYVelocity;
         }
