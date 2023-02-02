@@ -39,10 +39,16 @@ public class AnimationAndMovementController : MonoBehaviour
     bool _isJumping = false;
     [SerializeField]
     bool _isJumpPressed = false;
+    bool _isJumpAnimating = false;
     float _initialJumpVelocity;
     float _maxJumpHeight = 4.0f;
     float _maxJumpTime = 0.5f;
 
+    //Jumping Extras Test
+    int _jumpCount = 0;
+    Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
+    Dictionary<int, float> _initialJumpGravities = new Dictionary<int, float>();
+    Coroutine _currentJumpResetRoutine = null;
     private void Awake()
     {
         //Set Reference Variables
@@ -74,6 +80,20 @@ public class AnimationAndMovementController : MonoBehaviour
         float _timeToApex = _maxJumpTime / 2;
         _gravity = (-2 * _maxJumpHeight) / Mathf.Pow(_timeToApex, 2);
         _initialJumpVelocity = (2 * _maxJumpHeight) / _timeToApex;
+
+        float _secondJumpGravity = (-2 * (_maxJumpHeight + 12)) / Mathf.Pow((_timeToApex * 1.25f), 2);
+        float _secondJumpInitialVelocity = (2 * (_maxJumpHeight + 12)) / (_timeToApex * 1.25f);
+        float _thirdJumpGravity = (-2 * (_maxJumpHeight + 4)) / Mathf.Pow((_timeToApex * 1.5f), 2);
+        float _thirdJumpInitialVelocity = (2 * (_maxJumpHeight + 4)) / (_timeToApex * 1.5f);
+
+        _initialJumpVelocities.Add(1, _initialJumpVelocity);
+        _initialJumpVelocities.Add(2, _secondJumpInitialVelocity);
+        _initialJumpVelocities.Add(3, _thirdJumpInitialVelocity);
+
+        _initialJumpGravities.Add(0, _gravity);
+        _initialJumpGravities.Add(1, _gravity);
+        _initialJumpGravities.Add(2, _secondJumpGravity);
+        _initialJumpGravities.Add(3, _thirdJumpGravity);
     }
 
     private void OnJumpInput(InputAction.CallbackContext context)
@@ -119,17 +139,17 @@ public class AnimationAndMovementController : MonoBehaviour
     void HandleAnimation()
     {
         //Get Parameter Values From Animator
-        bool isWalking = _animator.GetBool("isWalking");
-        bool isRunning = _animator.GetBool("isJumping");
-        bool isDashing = _animator.GetBool("isDashing");
-        bool isIdle = _animator.GetBool("isIdle");
+        bool _isWalking = _animator.GetBool("isWalking");
+        bool _isRunning = _animator.GetBool("isJumping");
+        bool _isDashing = _animator.GetBool("isDashing");
+        bool _isIdle = _animator.GetBool("isIdle");
 
         //Start Walking Animation If MovementPressed Is True And Not Already Walking Else Viceversa
-        if (_isMovementPressed && !isWalking)
+        if (_isMovementPressed && !_isWalking)
         {
             _animator.SetBool(_isWalkingHash, true);
         }
-        else if (!_isMovementPressed && isWalking)
+        else if (!_isMovementPressed && _isWalking)
         {
             _animator.SetBool(_isWalkingHash, false);
         }
@@ -157,41 +177,61 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         if (!_isJumping && _characterController.isGrounded && _isJumpPressed)
         {
+            if (_jumpCount == 3 && _currentJumpResetRoutine != null)
+            {
+                StopCoroutine(_currentJumpResetRoutine);
+            }
+            _animator.SetBool("isJumping", true);
+            _isJumpAnimating = true;
             _isJumping = true;
-            _currentMovement.y = _initialJumpVelocity * 0.5f;
-            _currentRunMovement.y = _initialJumpVelocity * 0.5f;
+            _jumpCount += 1;
+            _currentMovement.y = _initialJumpVelocities[_jumpCount] * 0.5f;
+            _currentRunMovement.y = _initialJumpVelocities[_jumpCount] * 0.5f;
         }
-        else if (!_isJumpPressed && _isJumping && !_characterController.isGrounded)
+        else if (!_isJumpPressed && _isJumping && _characterController.isGrounded)
         {
             _isJumping = false;
         }
     }
+
+    IEnumerator JumpResetRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _jumpCount = 0;
+    }
     void HandleGravity()
     {
         bool _isFalling = _currentMovement.y <= 0.0f || !_isJumpPressed;
-        float _fallMultiplier = 2.0f;
+        float _fallMultiplier = 1.5f;
 
         if (_characterController.isGrounded)
         {
+            if (_isJumpAnimating)
+            {
+                _animator.SetBool(_isJumpingHash, false);
+                _isJumpAnimating = false;
+                _currentJumpResetRoutine = StartCoroutine(JumpResetRoutine());
+            }
             _currentMovement.y = _groundedGravity;
             _currentRunMovement.y = _groundedGravity;
         }
-        else if (_isFalling) 
+        else if (_isFalling)
         {
             float _previousYVelocity = _currentMovement.y;
-            float _newYVelocity = _currentMovement.y + (_gravity * _fallMultiplier * Time.deltaTime);
+            float _newYVelocity = _currentMovement.y + (_initialJumpGravities[_jumpCount] * _fallMultiplier * Time.deltaTime);
+            //Makes Character Fall Like A Feather
             float _nextYVelocity = Mathf.Max((_previousYVelocity + _newYVelocity) * .5f, -20.0f);
             _currentMovement.y = _nextYVelocity;
             _currentRunMovement.y = _nextYVelocity;
         }
-        /*else
+        else
         {
             float _previousYVelocity = _currentMovement.y;
-            float _newYVelocity = _currentMovement.y + (_gravity * Time.deltaTime);
+            float _newYVelocity = _currentMovement.y + (_initialJumpGravities[_jumpCount] * Time.deltaTime);
             float _nextYVelocity = (_previousYVelocity + _newYVelocity) * .5f;
-            _currentMovement.y += _nextYVelocity;
-            _currentRunMovement.y += _nextYVelocity;
-        }*/
+            _currentMovement.y = _nextYVelocity;
+            _currentRunMovement.y = _nextYVelocity;
+        }
     }
 
     // Update is called once per frame
