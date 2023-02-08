@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1801,7 +1801,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295490221}
-  m_LocalRotation: {x: 0.33552548, y: 0.1589561, z: -0.057550028, w: 0.9267382}
+  m_LocalRotation: {x: 0.33552545, y: 0.15895607, z: -0.057550024, w: 0.9267382}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5146,7 +5146,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh182642
+  m_Name: pb_Mesh35970
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14204,7 +14204,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903490869}
-  m_LocalRotation: {x: 0.29978347, y: 0.16104373, z: -0.051419497, w: 0.9389094}
+  m_LocalRotation: {x: 0.29978344, y: 0.16104367, z: -0.05141948, w: 0.9389094}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16196,7 +16196,6 @@ GameObject:
   - component: {fileID: 4090752820194224470}
   - component: {fileID: 2243269037126213020}
   - component: {fileID: 639551743522081398}
-  - component: {fileID: 639551743522081397}
   m_Layer: 0
   m_Name: BocaIncendio (1)
   m_TagString: Blanco
@@ -16275,18 +16274,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 71.533264, y: 67.96498, z: 61.27661}
   m_Center: {x: 0, y: 0, z: 30.638306}
---- !u!114 &639551743522081397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297603978985077833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880a93cdaf5452f4985d21313122aa4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &639551743522081398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16461,7 +16448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471266a6384510e40bb1217c06618028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isRunPressed: 0
+  _isDashPressed: 0
   _runBaseSpeed: 2
   _runMultiplier: 5
   _isJumping: 0
@@ -17834,7 +17821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471266a6384510e40bb1217c06618028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isRunPressed: 0
+  _isDashPressed: 0
   _runBaseSpeed: 2
   _runMultiplier: 5
   _isJumping: 0
@@ -18259,7 +18246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471266a6384510e40bb1217c06618028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isRunPressed: 0
+  _isDashPressed: 0
   _runBaseSpeed: 2
   _runMultiplier: 5
   _isJumping: 0

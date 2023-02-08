@@ -15,6 +15,7 @@ public class AnimationAndMovementController : MonoBehaviour
     int _isWalkingHash;
     int _isDashingHash;
     int _isJumpingHash;
+    int _jumpCountHash;
     int _isIdleHash;
 
     //Variables To Store Player Input Values
@@ -23,7 +24,7 @@ public class AnimationAndMovementController : MonoBehaviour
     Vector3 _currentRunMovement;
     bool _isMovementPressed;
     [SerializeField]
-    bool _isRunPressed;
+    bool _isDashPressed;
 
     //Constants
     private float _rotationFactorPerFrame = 15.0f;
@@ -68,6 +69,7 @@ public class AnimationAndMovementController : MonoBehaviour
         _isDashingHash = Animator.StringToHash("isDashing");
         _isJumpingHash = Animator.StringToHash("isJumping");
         _isIdleHash = Animator.StringToHash("isIdle");
+        _jumpCountHash = Animator.StringToHash("_jumpCount");
 
         //Set The Player Input Callbacks
         //WALK
@@ -75,8 +77,8 @@ public class AnimationAndMovementController : MonoBehaviour
         _playerInputs.CharacterControls.Move.performed += OnMovementInput;
         _playerInputs.CharacterControls.Move.canceled += OnMovementInput;
         //RUN
-        _playerInputs.CharacterControls.Run.started += OnRunInput;
-        _playerInputs.CharacterControls.Run.canceled += OnRunInput;
+        _playerInputs.CharacterControls.Run.started += OnDashInput;
+        _playerInputs.CharacterControls.Run.canceled += OnDashInput;
         //JUMP
         _playerInputs.CharacterControls.Jump.started += OnJumpInput;
         _playerInputs.CharacterControls.Jump.canceled += OnJumpInput;
@@ -105,15 +107,16 @@ public class AnimationAndMovementController : MonoBehaviour
         _initialJumpGravities.Add(3, _thirdJumpGravity);
     }
 
+    #region InputCallbackCtx
     private void OnJumpInput(InputAction.CallbackContext context)
     {
         _isJumpPressed = context.ReadValueAsButton();
         Debug.Log(_isJumpPressed);
     }
 
-    void OnRunInput(InputAction.CallbackContext context)
+    void OnDashInput(InputAction.CallbackContext context)
     {
-        _isRunPressed = context.ReadValueAsButton();
+        _isDashPressed = context.ReadValueAsButton();
     }
 
     void OnMovementInput (InputAction.CallbackContext context)
@@ -125,8 +128,9 @@ public class AnimationAndMovementController : MonoBehaviour
         _currentRunMovement.z = _currentMovementInput.y * _runMultiplier;
         _isMovementPressed = _currentMovementInput.x != _zero || _currentMovementInput.y != _zero;
     }
+    #endregion
 
-
+    #region Handlers
     void HandleRotation()
     {
         Vector3 positionToLookAt;
@@ -149,7 +153,8 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         //Get Parameter Values From Animator
         bool _isWalking = _animator.GetBool("isWalking");
-        bool _isRunning = _animator.GetBool("isJumping");
+        //bool _isRunning = _animator.GetBool("isRunning");
+        bool _isJumping = _animator.GetBool("isJumping");
         bool _isDashing = _animator.GetBool("isDashing");
         bool _isIdle = _animator.GetBool("isIdle");
 
@@ -163,15 +168,15 @@ public class AnimationAndMovementController : MonoBehaviour
             _animator.SetBool(_isWalkingHash, false);
         }
 
-        /*if ((_isMovementPressed && _isJumpPressed) && !isRunning)
+        if ((_isMovementPressed && _isDashPressed) && !_isDashing)
         {
-            _animator.SetBool(_isJumpingHash, true);
+            _animator.SetBool(_isDashingHash, true);
         }
-        else if ((!_isMovementPressed || !_isJumpPressed) && isRunning)
+        else if ((!_isMovementPressed || !_isDashPressed) && _isDashing)
         {
-            _animator.SetBool(_isRunningHash, false);
+            _animator.SetBool(_isDashingHash, false);
         }
-
+        /*
         if ((_isMovementPressed && _isJumpPressed) && !isRunning)
         {
             _animator.SetBool(_isRunningHash, true);
@@ -186,7 +191,7 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         if (!_isJumping && _characterController.isGrounded && _isJumpPressed)
         {
-            if (_jumpCount == 3 && _currentJumpResetRoutine != null)
+            if (_jumpCount < 3 && _currentJumpResetRoutine != null)
             {
                 StopCoroutine(_currentJumpResetRoutine);
             }
@@ -194,6 +199,7 @@ public class AnimationAndMovementController : MonoBehaviour
             _isJumpAnimating = true;
             _isJumping = true;
             _jumpCount += 1;
+            _animator.SetInteger(_jumpCountHash, _jumpCount);
             _currentMovement.y = _initialJumpVelocities[_jumpCount] * 0.5f;
             _currentRunMovement.y = _initialJumpVelocities[_jumpCount] * 0.5f;
         }
@@ -203,11 +209,6 @@ public class AnimationAndMovementController : MonoBehaviour
         }
     }
 
-    IEnumerator JumpResetRoutine()
-    {
-        yield return new WaitForSeconds(0.5f);
-        _jumpCount = 0;
-    }
     void HandleGravity()
     {
         bool _isFalling = _currentMovement.y <= 0.0f || !_isJumpPressed;
@@ -220,6 +221,11 @@ public class AnimationAndMovementController : MonoBehaviour
                 _animator.SetBool(_isJumpingHash, false);
                 _isJumpAnimating = false;
                 _currentJumpResetRoutine = StartCoroutine(JumpResetRoutine());
+                if (_jumpCount == 3)
+                {
+                    _jumpCount = 0;
+                    _animator.SetInteger(_jumpCountHash, _jumpCount);
+                }
             }
             _currentMovement.y = _groundedGravity;
             _currentRunMovement.y = _groundedGravity;
@@ -243,13 +249,21 @@ public class AnimationAndMovementController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    IEnumerator JumpResetRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _jumpCount = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
         HandleRotation();
         HandleAnimation();
 
-        if (_isRunPressed)
+        if (_isDashPressed)
         {
             _characterController.Move(_currentRunMovement * Time.deltaTime);
         }
@@ -261,6 +275,7 @@ public class AnimationAndMovementController : MonoBehaviour
         HandleJump();
     }
 
+    #region InputEnableDisable
     private void OnEnable()
     {
         // enable the character controls action map
@@ -272,4 +287,6 @@ public class AnimationAndMovementController : MonoBehaviour
         // disable the character controls action map
         _playerInputs.CharacterControls.Disable();
     }
+
+    #endregion
 }
