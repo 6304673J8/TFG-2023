@@ -84,7 +84,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 8223493904255586237}
   - component: {fileID: 8223493904255586238}
   - component: {fileID: 8223493904255586233}
+  - component: {fileID: 3466029242184951535}
   m_Layer: 10
   m_Name: Pickable_Green
   m_TagString: Pick_Color_Green
@@ -206,7 +207,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8223493904255586236}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.46597216, z: 0.47813225}
@@ -227,6 +228,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3466029242184951535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8223493904255586236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538739ad665c4e2409907dcb18f45437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9141975136398061890
 GameObject:
   m_ObjectHideFlags: 0

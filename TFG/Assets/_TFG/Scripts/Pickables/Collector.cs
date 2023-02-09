@@ -11,6 +11,7 @@ public class Collector : MonoBehaviour
         if (collectible != null)
         {
             collectible.Collect();
+            //Add A Return Material Or Material Setter For Player Change
         }
     }
 }
