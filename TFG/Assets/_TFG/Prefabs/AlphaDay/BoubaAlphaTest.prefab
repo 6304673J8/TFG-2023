@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197770669407012744}
   m_Layer: 9
-  m_Name: BoubaAlpha
+  m_Name: BoubaAlphaTest
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

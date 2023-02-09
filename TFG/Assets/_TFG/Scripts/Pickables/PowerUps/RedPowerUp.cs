@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//Being An ICollectible Let The Collector Script Call The Base Behaviour Of This Object
 public class RedPowerUp : MonoBehaviour, ICollectible
 {
     public static event Action OnRedPowerUpCollected;

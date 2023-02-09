@@ -22,6 +22,7 @@ public class AnimationAndMovementController : MonoBehaviour
     Vector2 _currentMovementInput;
     Vector3 _currentMovement;
     Vector3 _currentRunMovement;
+    Vector3 _appliedMovement;
     bool _isMovementPressed;
     [SerializeField]
     bool _isDashPressed;
@@ -51,7 +52,7 @@ public class AnimationAndMovementController : MonoBehaviour
     [SerializeField]
     float _maxJumpHeight = 2.0f;
     [SerializeField]
-    float _maxJumpTime = 0.5f;
+    float _maxJumpTime = 0.75f;
 
     //Jumping Extras Test
     int _jumpCount = 0;
@@ -92,10 +93,11 @@ public class AnimationAndMovementController : MonoBehaviour
         _gravity = (-2 * _maxJumpHeight) / Mathf.Pow(_timeToApex, 2);
         _initialJumpVelocity = (2 * _maxJumpHeight) / _timeToApex;
 
-        float _secondJumpGravity = (-2 * (_maxJumpHeight + 2)) / Mathf.Pow((_timeToApex * 1.25f), 2);
-        float _secondJumpInitialVelocity = (2 * (_maxJumpHeight + 2)) / (_timeToApex * 1.25f);
-        float _thirdJumpGravity = (-2 * (_maxJumpHeight + 4)) / Mathf.Pow((_timeToApex * 1.5f), 2);
-        float _thirdJumpInitialVelocity = (2 * (_maxJumpHeight + 4)) / (_timeToApex * 1.5f);
+        //This Was Originally _maxJumpHeight + Double
+        float _secondJumpGravity = (-2 * (_maxJumpHeight + 1)) / Mathf.Pow((_timeToApex * 1.25f), 2);
+        float _secondJumpInitialVelocity = (2 * (_maxJumpHeight + 1)) / (_timeToApex * 1.25f);
+        float _thirdJumpGravity = (-2 * (_maxJumpHeight + 2)) / Mathf.Pow((_timeToApex * 1.5f), 2);
+        float _thirdJumpInitialVelocity = (2 * (_maxJumpHeight + 2)) / (_timeToApex * 1.5f);
 
         _initialJumpVelocities.Add(1, _initialJumpVelocity);
         _initialJumpVelocities.Add(2, _secondJumpInitialVelocity);
@@ -175,7 +177,7 @@ public class AnimationAndMovementController : MonoBehaviour
         else if ((!_isMovementPressed || !_isDashPressed) && _isDashing)
         {
             _animator.SetBool(_isDashingHash, false);
-        }
+        } 
         /*
         if ((_isMovementPressed && _isJumpPressed) && !isRunning)
         {
@@ -200,8 +202,8 @@ public class AnimationAndMovementController : MonoBehaviour
             _isJumping = true;
             _jumpCount += 1;
             _animator.SetInteger(_jumpCountHash, _jumpCount);
-            _currentMovement.y = _initialJumpVelocities[_jumpCount] * 0.5f;
-            _currentRunMovement.y = _initialJumpVelocities[_jumpCount] * 0.5f;
+            _currentMovement.y = _initialJumpVelocities[_jumpCount];
+            _appliedMovement.y = _initialJumpVelocities[_jumpCount];
         }
         else if (!_isJumpPressed && _isJumping && _characterController.isGrounded)
         {
@@ -212,7 +214,7 @@ public class AnimationAndMovementController : MonoBehaviour
     void HandleGravity()
     {
         bool _isFalling = _currentMovement.y <= 0.0f || !_isJumpPressed;
-        float _fallMultiplier = 1.5f;
+        float _fallMultiplier = 2.0f;
 
         if (_characterController.isGrounded)
         {
@@ -228,24 +230,20 @@ public class AnimationAndMovementController : MonoBehaviour
                 }
             }
             _currentMovement.y = _groundedGravity;
-            _currentRunMovement.y = _groundedGravity;
+            _appliedMovement.y = _groundedGravity;
         }
         else if (_isFalling)
         {
             float _previousYVelocity = _currentMovement.y;
-            float _newYVelocity = _currentMovement.y + (_initialJumpGravities[_jumpCount] * _fallMultiplier * Time.deltaTime);
-            //Makes Character Fall Like A Feather
-            float _nextYVelocity = Mathf.Max((_previousYVelocity + _newYVelocity) * .5f, -20.0f);
-            _currentMovement.y = _nextYVelocity;
-            _currentRunMovement.y = _nextYVelocity;
+            _currentMovement.y = _currentMovement.y + (_initialJumpGravities[_jumpCount] * _fallMultiplier * Time.deltaTime);
+            //Makes Character Move
+            _appliedMovement.y = Mathf.Max((_previousYVelocity + _currentMovement.y) * .5f, -20.0f);
         }
         else
         {
             float _previousYVelocity = _currentMovement.y;
-            float _newYVelocity = _currentMovement.y + (_initialJumpGravities[_jumpCount] * Time.deltaTime);
-            float _nextYVelocity = (_previousYVelocity + _newYVelocity) * .5f;
-            _currentMovement.y = _nextYVelocity;
-            _currentRunMovement.y = _nextYVelocity;
+            _currentMovement.y = _currentMovement.y + (_initialJumpGravities[_jumpCount] * Time.deltaTime);
+            _appliedMovement.y = (_previousYVelocity + _currentMovement.y) * .5f;
         }
     }
 
@@ -265,12 +263,16 @@ public class AnimationAndMovementController : MonoBehaviour
 
         if (_isDashPressed)
         {
-            _characterController.Move(_currentRunMovement * Time.deltaTime);
+            _appliedMovement.x = _currentRunMovement.x;
+            _appliedMovement.z = _currentRunMovement.z;
         }
         else
         {
-            _characterController.Move(_currentMovement * Time.deltaTime);
+            _appliedMovement.x = _currentMovement.x;
+            _appliedMovement.z = _currentMovement.z;
         }
+        _characterController.Move(_appliedMovement * Time.deltaTime);
+
         HandleGravity();
         HandleJump();
     }

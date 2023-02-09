@@ -11,8 +11,7 @@ TagManager:
   - Pick_Color_Blue
   - Pick_Color_Red
   - Pick_Color_Green
-  - Blanco
-  - Enemy
+  - Pick_Color_White
   layers:
   - Default
   - TransparentFX
