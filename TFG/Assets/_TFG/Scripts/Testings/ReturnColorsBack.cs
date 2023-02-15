@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ReturnColorsBack : MonoBehaviour
@@ -30,17 +28,7 @@ public class ReturnColorsBack : MonoBehaviour
             if (characterMaterials[i].transform.CompareTag("Set_Color"))
             {
                 characterMaterials[i].material.SetColor("_BaseColor", _scenarioColors[index]);
-                characterMaterials[i].material.SetColor("_EmissionColor", _scenarioColors[index]);
-
             }
-            /*else
-                characterMaterials[i].material.SetTexture("_MainTex", albedoList[index]);*/
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1, 0, 0, .5f);
-        Gizmos.DrawCube(transform.position, new Vector3(1, 1, 1));
     }
 }
