@@ -14,4 +14,9 @@ public class RedPowerUp : MonoBehaviour, ICollectible
         Destroy(gameObject);
         OnRedPowerUpCollected?.Invoke();
     }
+
+    public void UpdateColor()
+    {
+        Debug.Log("Trying To Update Color Red");
+    }
 }

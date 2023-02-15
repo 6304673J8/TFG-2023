@@ -14,4 +14,19 @@ public class BluePowerUp : MonoBehaviour, ICollectible
         Destroy(gameObject);
         OnRedPowerUpCollected?.Invoke();
     }
+
+    public void UpdateColor()
+    {
+        Debug.Log("Trying To Update Color Blue");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        AnimationAndMovementController player = other.GetComponent<AnimationAndMovementController>();
+
+        if (player != null)
+        {
+            player.HandleColorSwap(0);
+        }
+    }
 }

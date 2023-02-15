@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class AnimationAndMovementController : MonoBehaviour
 {
+    public static AnimationAndMovementController Instance { get; private set; }
+
     public event EventHandler<OnSelectedInteractableChangedEventArgs> OnSelectedInteractableChanged;
 
     public class OnSelectedInteractableChangedEventArgs : EventArgs
@@ -26,6 +28,18 @@ public class AnimationAndMovementController : MonoBehaviour
         Gamepad_InteractAlternate,
         Gamepad_Pause
     }
+
+    public enum ColorPicked
+    {
+        Color_Green,
+        Color_Blue,
+        Color_Red,
+        Color_White
+    }
+
+    //Visuals
+    [SerializeField] private Renderer _renderer;
+    //private Renderer _renderer;
 
     //Interact
     bool _isInteractPressed;
@@ -319,6 +333,27 @@ public class AnimationAndMovementController : MonoBehaviour
             float _previousYVelocity = _currentMovement.y;
             _currentMovement.y = _currentMovement.y + (_initialJumpGravities[_jumpCount] * Time.deltaTime);
             _appliedMovement.y = (_previousYVelocity + _currentMovement.y) * .5f;
+        }
+    }
+
+
+    public void HandleColorSwap(ColorPicked colorPicked)
+    {
+        switch (colorPicked)
+        {
+            default:
+            case ColorPicked.Color_Blue:
+                Debug.Log("Swapping To Blue");
+                _renderer.material.color = Color.blue;
+                return;
+            case ColorPicked.Color_Red:
+                Debug.Log("Swapping To Red");
+                _renderer.material.color = Color.red;
+                return;
+            case ColorPicked.Color_Green:
+                Debug.Log("Swapping To Green");
+                _renderer.material.color = Color.green;
+                return;
         }
     }
 

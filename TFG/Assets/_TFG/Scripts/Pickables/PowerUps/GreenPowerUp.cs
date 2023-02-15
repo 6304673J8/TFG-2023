@@ -14,4 +14,9 @@ public class GreenPowerUp : MonoBehaviour, ICollectible
         Destroy(gameObject);
         OnRedPowerUpCollected?.Invoke();
     }
+
+    public void UpdateColor()
+    {
+        Debug.Log("Trying To Update Color Green");
+    }
 }
