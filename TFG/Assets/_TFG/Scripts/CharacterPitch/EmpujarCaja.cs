@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,15 +17,25 @@ public class EmpujarCaja : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.X))
+        {
+            ToggleBoxActive();
+        }
+    }
+
+    private void ToggleBoxActive()
+    {
+        if (estaActivo == true)
+            estaActivo = false;
+        else if (estaActivo == false)
+            estaActivo = true;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (estaActivo == true)
+        Rigidbody body = hit.collider.attachedRigidbody;
+        if (estaActivo)
         {
-            Rigidbody body = hit.collider.attachedRigidbody;
-
             if (body == null || body.isKinematic)
             {
                 return;
@@ -33,14 +44,25 @@ public class EmpujarCaja : MonoBehaviour
             {
                 return;
             }
-
+            Debug.Log("Empujando");
             Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
 
             body.velocity = pushDir * pushPower;
         }
-        else
+        else if (!estaActivo)
         {
-            estaActivo = false;
+            if (body == null || body.isKinematic)
+            {
+                return;
+            }
+            if (hit.moveDirection.y < -0.3)
+            {
+                return;
+            }
+            Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+
+            body.velocity = pushDir * 0;
         }
+
     }
 }

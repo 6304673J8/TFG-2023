@@ -4,7 +4,7 @@ public class ReturnColorsBack : MonoBehaviour
 {
     [ColorUsage(true, true)]
     Renderer[] characterMaterials;
-    public Color[] _scenarioColors;
+    public Material[] _material;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class ReturnColorsBack : MonoBehaviour
         {
             if (characterMaterials[i].transform.CompareTag("Set_Color"))
             {
-                characterMaterials[i].material.SetColor("_BaseColor", _scenarioColors[index]);
+                characterMaterials[i].material = _material[index];
             }
         }
     }

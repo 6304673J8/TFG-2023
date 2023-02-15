@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class AnimationAndMovementControllerTest : MonoBehaviour
 {
+    public Vector3 impulse;
+    private Vector3 moveDirection;
+
     //Declare Reference Variables
     private PlayerInputs _playerInputs;
     private CharacterController _characterController;
@@ -226,5 +229,10 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     {
         // disable the character controls action map
         _playerInputs.CharacterControls.Disable();
+    }
+
+    public void ApplyImpulse()
+    {
+        _currentMovement.y = _initialJumpVelocity * 2f;
     }
 }
