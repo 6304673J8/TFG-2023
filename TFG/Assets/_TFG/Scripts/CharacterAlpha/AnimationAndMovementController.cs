@@ -59,7 +59,10 @@ public class AnimationAndMovementController : MonoBehaviour
     Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
     Dictionary<int, float> _initialJumpGravities = new Dictionary<int, float>();
     Coroutine _currentJumpResetRoutine = null;
-    
+
+    //Interact
+    bool _isInteractPressed;
+
     private void Awake()
     {
         //Set Reference Variables
@@ -83,6 +86,10 @@ public class AnimationAndMovementController : MonoBehaviour
         //JUMP
         _playerInputs.CharacterControls.Jump.started += OnJumpInput;
         _playerInputs.CharacterControls.Jump.canceled += OnJumpInput;
+
+        //JUMP
+        _playerInputs.CharacterControls.Interact.started += OnInteractInput;
+        _playerInputs.CharacterControls.Interact.canceled += OnInteractInput;
 
         SetupJumpVariables();
     }
@@ -114,6 +121,12 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         _isJumpPressed = context.ReadValueAsButton();
         Debug.Log(_isJumpPressed);
+    }
+
+    private void OnInteractInput(InputAction.CallbackContext context)
+    {
+        _isInteractPressed = context.ReadValueAsButton();
+        Debug.Log(_isInteractPressed);
     }
 
     void OnDashInput(InputAction.CallbackContext context)
