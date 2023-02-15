@@ -6,6 +6,36 @@ using UnityEngine.InputSystem;
 
 public class AnimationAndMovementController : MonoBehaviour
 {
+    public event EventHandler<OnSelectedInteractableChangedEventArgs> OnSelectedInteractableChanged;
+
+    public class OnSelectedInteractableChangedEventArgs : EventArgs
+    {
+        public BaseInteractable selectedInteractable;
+    }
+
+    public enum Binding
+    {
+        Move_Up,
+        Move_Down,
+        Move_Left,
+        Move_Right,
+        Interact,
+        InteractAlternate,
+        Pause,
+        Gamepad_Interact,
+        Gamepad_InteractAlternate,
+        Gamepad_Pause
+    }
+
+    //Interact
+    bool _isInteractPressed;
+    private Vector3 _lastInteractDir;
+    [SerializeField]
+    private LayerMask interactablesLayerMask;
+    private BaseInteractable _selectedInteractable;
+    /*Boxes*/
+    [SerializeField] private Transform boxObjectHoldPoint;
+
     //Declare Reference Variables
     private PlayerInputs _playerInputs;
     private CharacterController _characterController;
@@ -60,8 +90,7 @@ public class AnimationAndMovementController : MonoBehaviour
     Dictionary<int, float> _initialJumpGravities = new Dictionary<int, float>();
     Coroutine _currentJumpResetRoutine = null;
 
-    //Interact
-    bool _isInteractPressed;
+    #region Initialize
 
     private void Awake()
     {
@@ -116,6 +145,8 @@ public class AnimationAndMovementController : MonoBehaviour
         _initialJumpGravities.Add(3, _thirdJumpGravity);
     }
 
+    #endregion
+
     #region InputCallbackCtx
     private void OnJumpInput(InputAction.CallbackContext context)
     {
@@ -146,6 +177,7 @@ public class AnimationAndMovementController : MonoBehaviour
     #endregion
 
     #region Handlers
+
     void HandleRotation()
     {
         Vector3 positionToLookAt;
@@ -224,6 +256,36 @@ public class AnimationAndMovementController : MonoBehaviour
         }
     }
 
+    void HandleInteractions()
+    {
+        if (_isInteractPressed)
+        {
+            Debug.Log("Interacting");
+            float interactDistance = 2f;
+
+            if (Physics.Raycast(transform.position, _lastInteractDir, out RaycastHit raycastHit, interactDistance, interactablesLayerMask))
+            {
+                Debug.Log("Found Interactable");
+                if (raycastHit.transform.TryGetComponent(out BaseInteractable baseInteractable))
+                {
+                    // Has ClearCounter
+                    if (baseInteractable != _selectedInteractable)
+                    {
+                        SetSelectedInteractable(baseInteractable);
+                    }
+                }
+                else
+                {
+                    SetSelectedInteractable(null);
+
+                }
+            }
+            else
+            {
+                SetSelectedInteractable(null);
+            }
+        }
+    }
     void HandleGravity()
     {
         bool _isFalling = _currentMovement.y <= 0.0f || !_isJumpPressed;
@@ -262,6 +324,25 @@ public class AnimationAndMovementController : MonoBehaviour
 
     #endregion
 
+    #region Interactable
+
+    private void SetSelectedInteractable(BaseInteractable selectedInteractable)
+    {
+        this._selectedInteractable = selectedInteractable;
+
+        OnSelectedInteractableChanged?.Invoke(this, new OnSelectedInteractableChangedEventArgs
+        {
+            selectedInteractable = _selectedInteractable
+        });
+    }
+
+    public Transform GetKitchenObjectFollowTransform()
+    {
+        return boxObjectHoldPoint;
+    }
+
+    #endregion
+
     IEnumerator JumpResetRoutine()
     {
         yield return new WaitForSeconds(0.5f);
@@ -273,7 +354,7 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         HandleRotation();
         HandleAnimation();
-
+        HandleInteractions();
         if (_isDashPressed)
         {
             _appliedMovement.x = _currentRunMovement.x;

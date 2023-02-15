@@ -3302,6 +3302,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &625785022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625785023}
+  m_Layer: 0
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &625785023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625785022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0317, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450652908633621}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &675908443
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -14206,7 +14237,7 @@ GameObject:
   - component: {fileID: 1575146048}
   - component: {fileID: 1575146047}
   - component: {fileID: 1575146046}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14233,7 +14264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3179c594802a6b4c8c9d6b8a73619a5, type: 2}
+  - {fileID: 2100000, guid: 514ceb5e8ba3a2d42bf5161aa161f049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16640,6 +16671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117734369}
   - component: {fileID: 2117734370}
+  - component: {fileID: 2117734371}
   m_Layer: 0
   m_Name: GreenSkill_Box
   m_TagString: Untagged
@@ -16676,6 +16708,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &2117734371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117734368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7942fc9be0ae9f34886cadd3b21c1fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableTransformPoint: {fileID: 625785023}
 --- !u!1 &297603976932749908
 GameObject:
   m_ObjectHideFlags: 0
@@ -18162,6 +18207,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3203328178010212480, guid: f5c5102a85edaab418d046feae24b548,
+        type: 3}
+      propertyPath: boxObjectHoldPoint
+      value: 
+      objectReference: {fileID: 625785023}
+    - target: {fileID: 3203328178010212480, guid: f5c5102a85edaab418d046feae24b548,
+        type: 3}
+      propertyPath: countersLayerMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203328178010212480, guid: f5c5102a85edaab418d046feae24b548,
+        type: 3}
+      propertyPath: interactablesLayerMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 3203328178010212510, guid: f5c5102a85edaab418d046feae24b548,
         type: 3}
       propertyPath: m_Name
@@ -18400,7 +18460,7 @@ PrefabInstance:
     - target: {fileID: 8628976601701701039, guid: e8284f41601af044693d203c784a4d55,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2983
+      value: 2989
       objectReference: {fileID: 0}
     - target: {fileID: 9110749215351893922, guid: e8284f41601af044693d203c784a4d55,
         type: 3}
@@ -18470,6 +18530,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471266a6384510e40bb1217c06618028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactablesLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  boxObjectHoldPoint: {fileID: 0}
   _isDashPressed: 0
   _runBaseSpeed: 2
   _runMultiplier: 5
@@ -18831,6 +18895,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471266a6384510e40bb1217c06618028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactablesLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  boxObjectHoldPoint: {fileID: 0}
   _isDashPressed: 0
   _runBaseSpeed: 2
   _runMultiplier: 5
