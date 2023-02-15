@@ -10,13 +10,13 @@ public class EmpujarCaja : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        estaActivo = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        estaActivo = true;
+        
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
