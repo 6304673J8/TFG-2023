@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 828680912392123221}
   - component: {fileID: 73375653}
   m_Layer: 8
-  m_Name: Pickable_Red
+  m_Name: PowerUp_Red
   m_TagString: Pick_Color_Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

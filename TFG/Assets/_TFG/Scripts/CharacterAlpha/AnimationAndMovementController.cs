@@ -15,6 +15,7 @@ public class AnimationAndMovementController : MonoBehaviour
         public BaseInteractable selectedInteractable;
     }
 
+    //Future Key Re Binding
     public enum Binding
     {
         Move_Up,

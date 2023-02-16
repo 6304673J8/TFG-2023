@@ -4,20 +4,18 @@ using UnityEngine;
 using System;
 
 //Being An ICollectible Let The Collector Script Call The Base Behaviour Of This Object
-public class BluePowerUp : MonoBehaviour, ICollectible
+public class BluePowerUp : MonoBehaviour, IPowerUp
 {
-    public static event Action OnRedPowerUpCollected;
-
-    public void Collect()
+    public static event Action OnGreenPowerUpCollected;
+    public Renderer renderer
     {
-        Debug.Log("You Collected The Blue Power Up");
-        Destroy(gameObject);
-        OnRedPowerUpCollected?.Invoke();
+        get { return gameObject.GetComponent<Renderer>(); }
     }
 
-    public void UpdateColor()
+    public void UpdateColor(Renderer renderer)
     {
-        Debug.Log("Trying To Update Color Blue");
+        Debug.Log("You Collected The Green Power Up");
+        OnGreenPowerUpCollected?.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)
