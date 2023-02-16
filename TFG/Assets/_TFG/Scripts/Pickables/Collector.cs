@@ -27,7 +27,7 @@ public class Collector : MonoBehaviour
 
         if (player != null)
         {
-            player.HandleColorSwap(0);
+            //player.HandleColorSwap(0);
         }
         //player.HandleColorSwap(colorToSwap);
     }

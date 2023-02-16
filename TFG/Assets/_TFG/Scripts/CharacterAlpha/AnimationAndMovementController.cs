@@ -8,13 +8,6 @@ public class AnimationAndMovementController : MonoBehaviour
 {
     public static AnimationAndMovementController Instance { get; private set; }
 
-    public event EventHandler<OnSelectedInteractableChangedEventArgs> OnSelectedInteractableChanged;
-
-    public class OnSelectedInteractableChangedEventArgs : EventArgs
-    {
-        public BaseInteractable selectedInteractable;
-    }
-
     //Future Key Re Binding
     public enum Binding
     {
@@ -30,26 +23,7 @@ public class AnimationAndMovementController : MonoBehaviour
         Gamepad_Pause
     }
 
-    public enum ColorPicked
-    {
-        Color_Green,
-        Color_Blue,
-        Color_Red,
-        Color_White
-    }
-
-    //Visuals
-    [SerializeField] private Renderer _renderer;
     //private Renderer _renderer;
-
-    //Interact
-    bool _isInteractPressed;
-    private Vector3 _lastInteractDir;
-    [SerializeField]
-    private LayerMask interactablesLayerMask;
-    private BaseInteractable _selectedInteractable;
-    /*Boxes*/
-    [SerializeField] private Transform boxObjectHoldPoint;
 
     //Declare Reference Variables
     private PlayerInputs _playerInputs;
@@ -131,10 +105,6 @@ public class AnimationAndMovementController : MonoBehaviour
         _playerInputs.CharacterControls.Jump.started += OnJumpInput;
         _playerInputs.CharacterControls.Jump.canceled += OnJumpInput;
 
-        //JUMP
-        _playerInputs.CharacterControls.Interact.started += OnInteractInput;
-        _playerInputs.CharacterControls.Interact.canceled += OnInteractInput;
-
         SetupJumpVariables();
     }
 
@@ -167,12 +137,6 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         _isJumpPressed = context.ReadValueAsButton();
         Debug.Log(_isJumpPressed);
-    }
-
-    private void OnInteractInput(InputAction.CallbackContext context)
-    {
-        _isInteractPressed = context.ReadValueAsButton();
-        Debug.Log(_isInteractPressed);
     }
 
     void OnDashInput(InputAction.CallbackContext context)
@@ -271,36 +235,6 @@ public class AnimationAndMovementController : MonoBehaviour
         }
     }
 
-    void HandleInteractions()
-    {
-        if (_isInteractPressed)
-        {
-            Debug.Log("Interacting");
-            float interactDistance = 2f;
-
-            if (Physics.Raycast(transform.position, _lastInteractDir, out RaycastHit raycastHit, interactDistance, interactablesLayerMask))
-            {
-                Debug.Log("Found Interactable");
-                if (raycastHit.transform.TryGetComponent(out BaseInteractable baseInteractable))
-                {
-                    // Has ClearCounter
-                    if (baseInteractable != _selectedInteractable)
-                    {
-                        SetSelectedInteractable(baseInteractable);
-                    }
-                }
-                else
-                {
-                    SetSelectedInteractable(null);
-
-                }
-            }
-            else
-            {
-                SetSelectedInteractable(null);
-            }
-        }
-    }
     void HandleGravity()
     {
         bool _isFalling = _currentMovement.y <= 0.0f || !_isJumpPressed;
@@ -337,46 +271,6 @@ public class AnimationAndMovementController : MonoBehaviour
         }
     }
 
-
-    public void HandleColorSwap(ColorPicked colorPicked)
-    {
-        switch (colorPicked)
-        {
-            default:
-            case ColorPicked.Color_Blue:
-                Debug.Log("Swapping To Blue");
-                _renderer.material.color = Color.blue;
-                return;
-            case ColorPicked.Color_Red:
-                Debug.Log("Swapping To Red");
-                _renderer.material.color = Color.red;
-                return;
-            case ColorPicked.Color_Green:
-                Debug.Log("Swapping To Green");
-                _renderer.material.color = Color.green;
-                return;
-        }
-    }
-
-    #endregion
-
-    #region Interactable
-
-    private void SetSelectedInteractable(BaseInteractable selectedInteractable)
-    {
-        this._selectedInteractable = selectedInteractable;
-
-        OnSelectedInteractableChanged?.Invoke(this, new OnSelectedInteractableChangedEventArgs
-        {
-            selectedInteractable = _selectedInteractable
-        });
-    }
-
-    public Transform GetKitchenObjectFollowTransform()
-    {
-        return boxObjectHoldPoint;
-    }
-
     #endregion
 
     IEnumerator JumpResetRoutine()
@@ -390,7 +284,6 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         HandleRotation();
         HandleAnimation();
-        HandleInteractions();
         if (_isDashPressed)
         {
             _appliedMovement.x = _currentRunMovement.x;

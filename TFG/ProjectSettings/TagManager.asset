@@ -12,6 +12,9 @@ TagManager:
   - Pick_Color_Red
   - Pick_Color_Green
   - Pick_Color_White
+  - Blanco
+  - FxTemporaire
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,7 @@ TagManager:
   - Entity_Red
   - Entity_White
   - Entity_Green
-  - 
+  - Interactable
   - 
   - 
   - 

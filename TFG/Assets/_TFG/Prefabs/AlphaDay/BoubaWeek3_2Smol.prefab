@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &625785022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625785023}
+  m_Layer: 0
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &625785023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625785022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0317, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2828069994531394084}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1944224419548787390
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,8 +137,9 @@ GameObject:
   - component: {fileID: 2828069994531394084}
   - component: {fileID: 3203328178010212483}
   - component: {fileID: 3203328178010212480}
-  - component: {fileID: 3203328178010212481}
   - component: {fileID: 3203328178010212482}
+  - component: {fileID: 3203328178010212481}
+  - component: {fileID: 879859153489080746}
   m_Layer: 0
   m_Name: BoubaWeek3_2Smol
   m_TagString: Player
@@ -136,6 +168,7 @@ Transform:
   - {fileID: 5431076352475809464}
   - {fileID: 9174854418242419979}
   - {fileID: 7194183685164133860}
+  - {fileID: 625785023}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -176,6 +209,19 @@ MonoBehaviour:
   _isJumpPressed: 0
   _maxJumpHeight: 1
   _maxJumpTime: 0.5
+--- !u!114 &3203328178010212482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3203328178010212510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc33b04652e65f40afcb9013284b6c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerRenderer: {fileID: 5973828897997930521}
 --- !u!95 &3203328178010212481
 Animator:
   serializedVersion: 4
@@ -196,7 +242,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3203328178010212482
+--- !u!114 &879859153489080746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,9 +251,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3203328178010212510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dc33b04652e65f40afcb9013284b6c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5387f1e17f591874e9eaa9e39e9c8959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactablesLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _material: []
+  _renderer: {fileID: 0}
+  _colorPicked: 0
+  boxObjectHoldPoint: {fileID: 0}
 --- !u!1 &3302963500772826533
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +585,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: 95815ee5615d83e48bf7c0734d440054, type: 3}
+  - {fileID: 2100000, guid: d8290cf7abc789a408ef31df24dc9a51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
