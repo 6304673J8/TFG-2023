@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 3203328178010212482}
   - component: {fileID: 3203328178010212481}
   - component: {fileID: 879859153489080746}
+  - component: {fileID: 543450652908633627}
   m_Layer: 0
   m_Name: BoubaWeek3_2Smol
   m_TagString: Player
@@ -170,7 +171,7 @@ Transform:
   - {fileID: 7194183685164133860}
   - {fileID: 625785023}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &3203328178010212483
 CharacterController:
@@ -180,9 +181,17 @@ CharacterController:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3203328178010212510}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Height: 0.03
   m_Radius: 0.01
   m_SlopeLimit: 45
@@ -224,7 +233,7 @@ MonoBehaviour:
   _playerRenderer: {fileID: 5973828897997930521}
 --- !u!95 &3203328178010212481
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -241,7 +250,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &879859153489080746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,11 +265,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactablesLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  _material: []
-  _renderer: {fileID: 0}
+    m_Bits: 2048
+  boxObjectHoldPoint: {fileID: 625785023}
+--- !u!114 &543450652908633627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3203328178010212510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191104b1b0bda8e47a93851b76608e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material:
+  - {fileID: 2100000, guid: 81222780e15a8e14b8e5a3bcd5213f65, type: 2}
+  - {fileID: 2100000, guid: 0b0b3766f98e7f649a33d439c448e11e, type: 2}
+  - {fileID: 2100000, guid: b25e567950e66144fbc27272c73d7188, type: 2}
+  - {fileID: 2100000, guid: d8290cf7abc789a408ef31df24dc9a51, type: 2}
+  _renderer: {fileID: 5973828897997930521}
   _colorPicked: 0
-  boxObjectHoldPoint: {fileID: 0}
 --- !u!1 &3302963500772826533
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +610,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d8290cf7abc789a408ef31df24dc9a51, type: 2}
+  - {fileID: 2100000, guid: 514ceb5e8ba3a2d42bf5161aa161f049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
