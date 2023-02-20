@@ -171,7 +171,7 @@ Transform:
   - {fileID: 7194183685164133860}
   - {fileID: 625785023}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &3203328178010212483
 CharacterController:
@@ -181,17 +181,9 @@ CharacterController:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3203328178010212510}
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Height: 0.03
   m_Radius: 0.01
   m_SlopeLimit: 45
@@ -233,7 +225,7 @@ MonoBehaviour:
   _playerRenderer: {fileID: 5973828897997930521}
 --- !u!95 &3203328178010212481
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -250,7 +242,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &879859153489080746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +602,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 514ceb5e8ba3a2d42bf5161aa161f049, type: 2}
+  - {fileID: 2100000, guid: 0b0b3766f98e7f649a33d439c448e11e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
