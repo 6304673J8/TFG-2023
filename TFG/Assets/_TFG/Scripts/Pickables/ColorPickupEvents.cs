@@ -13,6 +13,13 @@ public class ColorPickupEvents : MonoBehaviour
     public GameObject ColorTest;
     public GameObject BodyLayer;
 
+    private EmpujarCaja _empujarCaja;
+
+    private void Start()
+    {
+        _empujarCaja = GetComponent<EmpujarCaja>();
+    }
+
     //Update Testings
     private void Update()
     {
@@ -62,20 +69,30 @@ public class ColorPickupEvents : MonoBehaviour
         if (other.gameObject.CompareTag("Pick_Color_Blue"))
         {
             LayerChanger(other, "BLUE");
+            _empujarCaja.enabled = false;
             onColorBluePicked?.Invoke(this, EventArgs.Empty);
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("Pick_Color_Red"))
         {
             LayerChanger(other, "RED");
+            _empujarCaja.enabled = false;
             onColorRedPicked?.Invoke(this, EventArgs.Empty);
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("Pick_Color_Green"))
         {
             LayerChanger(other, "GREEN");
+            _empujarCaja.enabled = true;
             onColorGreenPicked?.Invoke(this, EventArgs.Empty);
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
+        }
+        else if (other.gameObject.CompareTag("Pick_Color_White"))
+        {
+            LayerChanger(other, "WHITE");
+            _empujarCaja.enabled = false;
+            onColorGreenPicked?.Invoke(this, EventArgs.Empty);
+            //other.gameObject.SetActive(false);
         }
         else
         {

@@ -6,8 +6,24 @@ using UnityEngine.InputSystem;
 
 public class AnimationAndMovementControllerTest : MonoBehaviour
 {
-    public Vector3 impulse;
-    private Vector3 moveDirection;
+    public static AnimationAndMovementControllerTest Instance { get; private set; }
+
+    //Future Key Re Binding
+    public enum Binding
+    {
+        Move_Up,
+        Move_Down,
+        Move_Left,
+        Move_Right,
+        Interact,
+        InteractAlternate,
+        Pause,
+        Gamepad_Interact,
+        Gamepad_InteractAlternate,
+        Gamepad_Pause
+    }
+
+    //private Renderer _renderer;
 
     //Declare Reference Variables
     private PlayerInputs _playerInputs;
@@ -18,18 +34,25 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     int _isWalkingHash;
     int _isDashingHash;
     int _isJumpingHash;
+    int _jumpCountHash;
     int _isIdleHash;
 
     //Variables To Store Player Input Values
     Vector2 _currentMovementInput;
     Vector3 _currentMovement;
     Vector3 _currentRunMovement;
+    Vector3 _appliedMovement;
     bool _isMovementPressed;
     [SerializeField]
-    bool _isRunPressed;
+    bool _isDashPressed;
 
     //Constants
     private float _rotationFactorPerFrame = 15.0f;
+    [SerializeField]
+    private float _runBaseSpeed = 2.0f;
+
+    //Original value = 3.0f
+    [SerializeField]
     private float _runMultiplier = 5.0f;
     private int _zero = 0;
 
@@ -42,11 +65,21 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     bool _isJumping = false;
     [SerializeField]
     bool _isJumpPressed = false;
+    bool _isJumpAnimating = false;
     float _initialJumpVelocity;
+    //Original value = 4.0f
+    [SerializeField]
     float _maxJumpHeight = 2.0f;
-    float _maxJumpTime = 0.5f;
+    [SerializeField]
+    float _maxJumpTime = 0.75f;
 
-    private float timer;
+    //Jumping Extras Test
+    int _jumpCount = 0;
+    Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
+    Dictionary<int, float> _initialJumpGravities = new Dictionary<int, float>();
+    Coroutine _currentJumpResetRoutine = null;
+
+    #region Initialize
 
     private void Awake()
     {
@@ -58,6 +91,7 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
         _isDashingHash = Animator.StringToHash("isDashing");
         _isJumpingHash = Animator.StringToHash("isJumping");
         _isIdleHash = Animator.StringToHash("isIdle");
+        _jumpCountHash = Animator.StringToHash("_jumpCount");
 
         //Set The Player Input Callbacks
         //WALK
@@ -65,8 +99,8 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
         _playerInputs.CharacterControls.Move.performed += OnMovementInput;
         _playerInputs.CharacterControls.Move.canceled += OnMovementInput;
         //RUN
-        _playerInputs.CharacterControls.Run.started += OnRunInput;
-        _playerInputs.CharacterControls.Run.canceled += OnRunInput;
+        _playerInputs.CharacterControls.Run.started += OnDashInput;
+        _playerInputs.CharacterControls.Run.canceled += OnDashInput;
         //JUMP
         _playerInputs.CharacterControls.Jump.started += OnJumpInput;
         _playerInputs.CharacterControls.Jump.canceled += OnJumpInput;
@@ -79,29 +113,49 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
         float _timeToApex = _maxJumpTime / 2;
         _gravity = (-2 * _maxJumpHeight) / Mathf.Pow(_timeToApex, 2);
         _initialJumpVelocity = (2 * _maxJumpHeight) / _timeToApex;
+
+        //This Was Originally _maxJumpHeight + Double
+        float _secondJumpGravity = (-2 * (_maxJumpHeight + 1)) / Mathf.Pow((_timeToApex * 1.25f), 2);
+        float _secondJumpInitialVelocity = (2 * (_maxJumpHeight + 1)) / (_timeToApex * 1.25f);
+        float _thirdJumpGravity = (-2 * (_maxJumpHeight + 2)) / Mathf.Pow((_timeToApex * 1.5f), 2);
+        float _thirdJumpInitialVelocity = (2 * (_maxJumpHeight + 2)) / (_timeToApex * 1.5f);
+
+        _initialJumpVelocities.Add(1, _initialJumpVelocity);
+        _initialJumpVelocities.Add(2, _secondJumpInitialVelocity);
+        _initialJumpVelocities.Add(3, _thirdJumpInitialVelocity);
+
+        _initialJumpGravities.Add(0, _gravity);
+        _initialJumpGravities.Add(1, _gravity);
+        _initialJumpGravities.Add(2, _secondJumpGravity);
+        _initialJumpGravities.Add(3, _thirdJumpGravity);
     }
 
+    #endregion
+
+    #region InputCallbackCtx
     private void OnJumpInput(InputAction.CallbackContext context)
     {
         _isJumpPressed = context.ReadValueAsButton();
         Debug.Log(_isJumpPressed);
     }
 
-    void OnRunInput(InputAction.CallbackContext context)
+    void OnDashInput(InputAction.CallbackContext context)
     {
-        _isRunPressed = context.ReadValueAsButton();
+        _isDashPressed = context.ReadValueAsButton();
     }
 
     void OnMovementInput (InputAction.CallbackContext context)
     {
         _currentMovementInput = context.ReadValue<Vector2>();
-        _currentMovement.x = _currentMovementInput.x * 2.0f;
-        _currentMovement.z = _currentMovementInput.y * 2.0f;
+        _currentMovement.x = _currentMovementInput.x * _runBaseSpeed;
+        _currentMovement.z = _currentMovementInput.y * _runBaseSpeed;
         _currentRunMovement.x = _currentMovementInput.x * _runMultiplier;
         _currentRunMovement.z = _currentMovementInput.y * _runMultiplier;
         _isMovementPressed = _currentMovementInput.x != _zero || _currentMovementInput.y != _zero;
     }
+    #endregion
 
+    #region Handlers
 
     void HandleRotation()
     {
@@ -124,30 +178,31 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     void HandleAnimation()
     {
         //Get Parameter Values From Animator
-        bool isWalking = _animator.GetBool("isWalking");
-        bool isRunning = _animator.GetBool("isJumping");
-        bool isDashing = _animator.GetBool("isDashing");
-        bool isIdle = _animator.GetBool("isIdle");
+        bool _isWalking = _animator.GetBool("isWalking");
+        //bool _isRunning = _animator.GetBool("isRunning");
+        bool _isJumping = _animator.GetBool("isJumping");
+        bool _isDashing = _animator.GetBool("isDashing");
+        bool _isIdle = _animator.GetBool("isIdle");
 
         //Start Walking Animation If MovementPressed Is True And Not Already Walking Else Viceversa
-        if (_isMovementPressed && !isWalking)
+        if (_isMovementPressed && !_isWalking)
         {
             _animator.SetBool(_isWalkingHash, true);
         }
-        else if (!_isMovementPressed && isWalking)
+        else if (!_isMovementPressed && _isWalking)
         {
             _animator.SetBool(_isWalkingHash, false);
         }
 
-        /*if ((_isMovementPressed && _isJumpPressed) && !isRunning)
+        if ((_isMovementPressed && _isDashPressed) && !_isDashing)
         {
-            _animator.SetBool(_isJumpingHash, true);
+            _animator.SetBool(_isDashingHash, true);
         }
-        else if ((!_isMovementPressed || !_isJumpPressed) && isRunning)
+        else if ((!_isMovementPressed || !_isDashPressed) && _isDashing)
         {
-            _animator.SetBool(_isRunningHash, false);
-        }
-
+            _animator.SetBool(_isDashingHash, false);
+        } 
+        /*
         if ((_isMovementPressed && _isJumpPressed) && !isRunning)
         {
             _animator.SetBool(_isRunningHash, true);
@@ -161,18 +216,25 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     void HandleJump()
     {
         if (!_isJumping && _characterController.isGrounded && _isJumpPressed)
-        {          
+        {
+            if (_jumpCount < 3 && _currentJumpResetRoutine != null)
+            {
+                StopCoroutine(_currentJumpResetRoutine);
+            }
+            _animator.SetBool("isJumping", true);
+            _isJumpAnimating = true;
             _isJumping = true;
-            _currentMovement.y = _initialJumpVelocity * 0.5f;
-            _currentRunMovement.y = _initialJumpVelocity * 0.5f;
-            
+            _jumpCount += 1;
+            _animator.SetInteger(_jumpCountHash, _jumpCount);
+            _currentMovement.y = _initialJumpVelocities[_jumpCount];
+            _appliedMovement.y = _initialJumpVelocities[_jumpCount];
         }
-        else if (_isJumping && !_characterController.isGrounded)
+        else if (!_isJumpPressed && _isJumping && _characterController.isGrounded)
         {
             _isJumping = false;
         }
-        
     }
+
     void HandleGravity()
     {
         bool _isFalling = _currentMovement.y <= 0.0f || !_isJumpPressed;
@@ -180,25 +242,41 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
 
         if (_characterController.isGrounded)
         {
+            if (_isJumpAnimating)
+            {
+                _animator.SetBool(_isJumpingHash, false);
+                _isJumpAnimating = false;
+                _currentJumpResetRoutine = StartCoroutine(JumpResetRoutine());
+                if (_jumpCount == 3)
+                {
+                    _jumpCount = 0;
+                    _animator.SetInteger(_jumpCountHash, _jumpCount);
+                }
+            }
             _currentMovement.y = _groundedGravity;
-            _currentRunMovement.y = _groundedGravity;
+            _appliedMovement.y = _groundedGravity;
         }
-        else if (_isFalling) 
+        else if (_isFalling)
         {
             float _previousYVelocity = _currentMovement.y;
-            float _newYVelocity = _currentMovement.y + (_gravity * _fallMultiplier * Time.deltaTime);
-            float _nextYVelocity = Mathf.Max((_previousYVelocity + _newYVelocity) * .5f, -10.0f);
-            _currentMovement.y = _nextYVelocity;
-            _currentRunMovement.y = _nextYVelocity;
+            _currentMovement.y = _currentMovement.y + (_initialJumpGravities[_jumpCount] * _fallMultiplier * Time.deltaTime);
+            //Makes Character Move
+            _appliedMovement.y = Mathf.Max((_previousYVelocity + _currentMovement.y) * .5f, -20.0f);
         }
-        /*else
+        else
         {
             float _previousYVelocity = _currentMovement.y;
-            float _newYVelocity = _currentMovement.y + (_gravity * Time.deltaTime);
-            float _nextYVelocity = (_previousYVelocity + _newYVelocity) * .5f;
-            _currentMovement.y += _nextYVelocity;
-            _currentRunMovement.y += _nextYVelocity;
-        }*/
+            _currentMovement.y = _currentMovement.y + (_initialJumpGravities[_jumpCount] * Time.deltaTime);
+            _appliedMovement.y = (_previousYVelocity + _currentMovement.y) * .5f;
+        }
+    }
+
+    #endregion
+
+    IEnumerator JumpResetRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _jumpCount = 0;
     }
 
     // Update is called once per frame
@@ -206,19 +284,23 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     {
         HandleRotation();
         HandleAnimation();
-
-        if (_isRunPressed)
+        if (_isDashPressed)
         {
-            _characterController.Move(_currentRunMovement * Time.deltaTime);
+            _appliedMovement.x = _currentRunMovement.x;
+            _appliedMovement.z = _currentRunMovement.z;
         }
         else
         {
-            _characterController.Move(_currentMovement * Time.deltaTime);
+            _appliedMovement.x = _currentMovement.x;
+            _appliedMovement.z = _currentMovement.z;
         }
+        _characterController.Move(_appliedMovement * Time.deltaTime);
+
         HandleGravity();
         HandleJump();
     }
 
+    #region InputEnableDisable
     private void OnEnable()
     {
         // enable the character controls action map
@@ -231,8 +313,10 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
         _playerInputs.CharacterControls.Disable();
     }
 
+    #endregion
+    
     public void ApplyImpulse()
     {
         _currentMovement.y = _initialJumpVelocity * 2f;
-    }
+    } 
 }

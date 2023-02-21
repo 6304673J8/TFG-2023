@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8911469805944008917}
   - component: {fileID: 3222580354755665358}
   - component: {fileID: 1978545128753999989}
-  m_Layer: 7
-  m_Name: BoxBottom
+  m_Layer: 0
+  m_Name: BoxMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2640084171544337169}
   - component: {fileID: 2640084171544337168}
   - component: {fileID: 2640084171544337175}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FloorInitial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 270930430421974146}
   - component: {fileID: 2604908537368135752}
   - component: {fileID: 5148048785510079060}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BoxHigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,8 +380,8 @@ GameObject:
   - component: {fileID: 6420659292822434973}
   - component: {fileID: 7181636732526640370}
   - component: {fileID: 1771120031801087540}
-  m_Layer: 7
-  m_Name: BoxMiddle (1)
+  m_Layer: 0
+  m_Name: BoxMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,8 +477,8 @@ GameObject:
   - component: {fileID: 6954450414887503976}
   - component: {fileID: 626357614729443582}
   - component: {fileID: 5544092725183768198}
-  m_Layer: 7
-  m_Name: BoxBottom (1)
+  m_Layer: 0
+  m_Name: BoxBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
