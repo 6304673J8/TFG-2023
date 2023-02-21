@@ -12,18 +12,15 @@ public class ColorSwapHandler : MonoBehaviour
         Color_Red,
         Color_White
     }
-
+    public Material[] _materials;
     //Visuals
-    [SerializeField] private Material[] _material;
-    public Renderer _renderer;
+    [SerializeField]
+    private Renderer _playerRenderer;
+    //ToDelete
+    [SerializeField]
+    private GameObject _testRenderer;
 
     public ColorPicked _colorPicked;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     #region ColorSwap
 
@@ -34,27 +31,32 @@ public class ColorSwapHandler : MonoBehaviour
         {
             default:
                 _colorPicked = ColorPicked.Color_White;
-                _renderer.material.color = Color.white;
+                _testRenderer.GetComponent<Renderer>().material.color = Color.white;
+                _playerRenderer.material = _materials[3];
                 return;
             case 0:
                 Debug.Log("Swapping To Red");
                 _colorPicked = ColorPicked.Color_Red;
-                _renderer.material.color = Color.red;
+                _testRenderer.GetComponent<Renderer>().material.color = Color.red;
+                _playerRenderer.material = _materials[0];
                 return;
             case 1:
                 Debug.Log("Swapping To Green");
                 _colorPicked = ColorPicked.Color_Green;
-                _renderer.material.color = Color.green;
+                _testRenderer.GetComponent<Renderer>().material.color = Color.green;
+                _playerRenderer.material = _materials[1];
                 return;
             case 2:
                 Debug.Log("Swapping To Blue");
                 _colorPicked = ColorPicked.Color_Blue;
-                _renderer.material.color = Color.blue;
+                _testRenderer.GetComponent<Renderer>().material.color = Color.blue;
+                _playerRenderer.material = _materials[2];
                 return;
             case 3:
                 Debug.Log("Swapping To White");
                 _colorPicked = ColorPicked.Color_White;
-                _renderer.material.color = Color.white;
+                _testRenderer.GetComponent<Renderer>().material.color = Color.white;
+                _playerRenderer.material = _materials[3];
                 return;
         }
     }

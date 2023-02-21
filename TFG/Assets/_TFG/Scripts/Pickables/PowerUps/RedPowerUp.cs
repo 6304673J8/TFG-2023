@@ -4,17 +4,23 @@ using UnityEngine;
 using System;
 
 //Being An ICollectible Let The Collector Script Call The Base Behaviour Of This Object
-public class RedPowerUp : MonoBehaviour, IPowerUp
+public class RedPowerUp : PowerUp, IPowerUp
 {
-    public static event Action OnGreenPowerUpCollected;
-    public Renderer renderer
+    protected override void OnTriggerEnter(Collider other)
     {
-        get { return gameObject.GetComponent<Renderer>(); }
+        base.OnTriggerEnter(other);
+        
+        _playerPowerUp.PowerUpActivation(0);
+        _playerColorSwap.HandleColorSwap(0);
+    }
+    
+    public void PlaySFX()
+    {
+        throw new NotImplementedException();
     }
 
-    public void UpdateColor(Renderer renderer)
+    public void PlayVFX()
     {
-        Debug.Log("You Collected The Green Power Up");
-        OnGreenPowerUpCollected?.Invoke();
+        throw new NotImplementedException();
     }
 }

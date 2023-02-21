@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PowerUpHandler : MonoBehaviour
 {
+    public Renderer _playerRenderer;
+
     public event EventHandler<OnSelectedInteractableChangedEventArgs> OnSelectedInteractableChanged;
 
     public class OnSelectedInteractableChangedEventArgs : EventArgs
@@ -33,7 +35,7 @@ public class PowerUpHandler : MonoBehaviour
     {
         _playerInputs = new PlayerInputs();
 
-        //JUMP
+        //Interact
         _playerInputs.CharacterControls.Interact.started += OnInteractInput;
         _playerInputs.CharacterControls.Interact.canceled += OnInteractInput;
 
@@ -45,7 +47,13 @@ public class PowerUpHandler : MonoBehaviour
         Debug.Log(_isInteractPressed);
     }
 
-    private void Update()
+    public void PowerUpActivation(int powerUpColor)
+    {
+        Debug.Log("Activated Power Up" + powerUpColor);
+    }
+    
+    //Future Implementation For Color Restoring Objects
+    /*private void Update()
     {
         HandleInteractions();
     }
@@ -80,7 +88,7 @@ public class PowerUpHandler : MonoBehaviour
             }
         }
     }
-
+*/
     private void SetSelectedInteractable(BaseInteractable selectedInteractable)
     {
         this._selectedInteractable = selectedInteractable;

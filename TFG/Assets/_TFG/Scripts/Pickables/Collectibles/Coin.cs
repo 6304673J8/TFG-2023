@@ -9,7 +9,7 @@ public class Coin : MonoBehaviour, ICollectible
 
     public void Collect()
     {
-        Debug.Log("You Collected The Blue Power Up");
+        Debug.Log("You Collected A Key Object");
         Destroy(gameObject);
         OnCoinCollected?.Invoke();
     }
