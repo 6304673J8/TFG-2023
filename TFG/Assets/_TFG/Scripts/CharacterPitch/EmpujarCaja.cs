@@ -16,15 +16,7 @@ public class EmpujarCaja : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.X))
-        {
-            ToggleBoxActive();
-        }
-    }
-
-    private void ToggleBoxActive()
-    {
-       
+      
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
