@@ -9,6 +9,7 @@ public class ColorPickupEvents : MonoBehaviour
     public event EventHandler onColorBluePicked;
     public event EventHandler onColorRedPicked;
     public event EventHandler onColorGreenPicked;
+    public event EventHandler onColorWhitePicked;
 
     public GameObject ColorTest;
     public GameObject BodyLayer;
@@ -66,6 +67,7 @@ public class ColorPickupEvents : MonoBehaviour
         BodyLayer.layer = other.gameObject.layer;
         Debug.Log("Collided With Pickeable");
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Pick_Color_Blue"))

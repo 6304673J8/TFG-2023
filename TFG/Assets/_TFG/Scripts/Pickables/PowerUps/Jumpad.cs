@@ -21,10 +21,9 @@ public class Jumpad : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        collision.gameObject.GetComponent<LayerMask>();
         CharacterController controller;
         AnimationAndMovementControllerTest player = collision.GetComponent<AnimationAndMovementControllerTest>();
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == this.gameObject.layer)
         {
             Debug.Log("colisiona");
 
