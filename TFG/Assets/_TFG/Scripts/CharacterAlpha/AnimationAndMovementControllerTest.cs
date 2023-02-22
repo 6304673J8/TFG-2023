@@ -317,6 +317,7 @@ public class AnimationAndMovementControllerTest : MonoBehaviour
     
     public void ApplyImpulse()
     {
-        _currentMovement.y = _initialJumpVelocity * 2f;
+        if (_currentMovement.x == 0 || _currentMovement.x != 0)
+            _currentMovement.y = _initialJumpVelocity * 2f;
     } 
 }
