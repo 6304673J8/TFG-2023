@@ -14,9 +14,11 @@ public class ColorPickupEvents : MonoBehaviour
     public GameObject BodyLayer;
 
     private EmpujarCaja _empujarCaja;
+    //private Jumpad _jumpad;
 
     private void Start()
     {
+        //_jumpad = GetComponent<Jumpad>();
         _empujarCaja = GetComponent<EmpujarCaja>();
     }
 
@@ -69,6 +71,7 @@ public class ColorPickupEvents : MonoBehaviour
         if (other.gameObject.CompareTag("Pick_Color_Blue"))
         {
             LayerChanger(other, "BLUE");
+            //_jumpad.enabled = false;
             _empujarCaja.enabled = false;
             onColorBluePicked?.Invoke(this, EventArgs.Empty);
             //other.gameObject.SetActive(false);
@@ -76,6 +79,7 @@ public class ColorPickupEvents : MonoBehaviour
         else if (other.gameObject.CompareTag("Pick_Color_Red"))
         {
             LayerChanger(other, "RED");
+            //_jumpad.enabled = true;
             _empujarCaja.enabled = false;
             onColorRedPicked?.Invoke(this, EventArgs.Empty);
             //other.gameObject.SetActive(false);
@@ -84,12 +88,14 @@ public class ColorPickupEvents : MonoBehaviour
         {
             LayerChanger(other, "GREEN");
             _empujarCaja.enabled = true;
+            //_jumpad.enabled = false;
             onColorGreenPicked?.Invoke(this, EventArgs.Empty);
             //other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("Pick_Color_White"))
         {
             LayerChanger(other, "WHITE");
+            //_jumpad.enabled = false;
             _empujarCaja.enabled = false;
             onColorGreenPicked?.Invoke(this, EventArgs.Empty);
             //other.gameObject.SetActive(false);
