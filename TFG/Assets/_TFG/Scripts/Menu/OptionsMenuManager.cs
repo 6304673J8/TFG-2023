@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
-using UnityEngine.PlayerLoop;
 
 public class OptionsMenuManager : MonoBehaviour
 {
@@ -23,6 +21,9 @@ public class OptionsMenuManager : MonoBehaviour
 
     [Header("Graphics")] 
     [SerializeField] private Toggle _fullScreenToggle;
+    [SerializeField] private Image _fullScreenImage;
+    [SerializeField] private Sprite _deactivatedToggle;
+    [SerializeField] private Sprite _activatedToggle;
 
     private const string _musicHash = "SfxVolume";
     private const string _sfxHash = "MusicVolume";
@@ -34,7 +35,8 @@ public class OptionsMenuManager : MonoBehaviour
     private const int _defaultVelocityX = 200;
     private const int _defaultVelocityy = 3;
 
-    [Header("Animations")] [SerializeField]
+    [Header("Animations")] 
+    [SerializeField]
     private GameObject _menuAnimationManager;
 
     private Animator _animator;
@@ -60,7 +62,15 @@ public class OptionsMenuManager : MonoBehaviour
 
     private void UIEvents()
     {
-        //Camera ToDo
+        //Camera 
+        _fullScreenToggle.onValueChanged.AddListener(SetFullScreenBool);
+
+        //Music
+        _musicSlider.onValueChanged.AddListener(ChangeMusicVolumeSlider);
+        _sfxSlider.onValueChanged.AddListener(ChangeSfxVolumeSlider);
+
+        _musicInputField.onValueChanged.AddListener(ChangeMusicVolumeInput);
+        _sfxInputField.onValueChanged.AddListener(ChangeSfxVolumeInput);
     }
     
     //ButtonsAnimation
@@ -80,7 +90,19 @@ public class OptionsMenuManager : MonoBehaviour
 
     public void LoadSettings()
     {
-        //ToImplement
+        //ToImplement Camera
+        
+        //Set Audio Values
+        _musicSlider.value = PlayerPrefs.GetFloat(_musicHash, 50);
+        _sfxSlider.value = PlayerPrefs.GetFloat(_sfxHash, 50);
+
+        //Set Audio Input Values
+        _musicInputField.text = PlayerPrefs.GetFloat(_musicHash, 50).ToString();
+        _sfxInputField.text = PlayerPrefs.GetFloat(_sfxHash, 50).ToString();
+
+        //Set full screen
+        _isFullScreen = PlayerPrefs.GetInt("FullScreen", 0) == 1;
+        _fullScreenToggle.isOn = _isFullScreen;      
     }
     
     #region Graphics
@@ -91,30 +113,21 @@ public class OptionsMenuManager : MonoBehaviour
         Screen.fullScreen = _value;
     }
     
+    public void CheckIfFullScreen()
+    {
+        if (_fullScreenToggle.isOn)
+        {
+            _fullScreenImage.sprite = _activatedToggle;
+        }
+        else
+        {
+            _fullScreenImage.sprite = _deactivatedToggle;
+        }
+    }
+
     #endregion
     
     #region Audio
-
-    public void ChangeSfxVolumeInput(string _value)
-    {
-        if (float.TryParse(_value, out float _sfxVolume))
-        {
-            if (_sfxVolume > 100)
-            {
-                _sfxVolume = 100;
-                _sfxInputField.text = "100";
-            }
-            else if (_sfxVolume < 0)
-            {
-                _sfxVolume = 0;
-                _sfxInputField.text = "0";
-            }
-            
-            PlayerPrefs.SetFloat(_sfxHash, _sfxVolume);
-            _sfxSlider.value = _sfxVolume;
-            print(_sfxVolume);
-        }
-    }
     
     public void ChangeMusicVolumeInput(string _value)
     {
@@ -136,6 +149,29 @@ public class OptionsMenuManager : MonoBehaviour
             print(_musicVolume);
         }
     }
+    
+    public void ChangeSfxVolumeInput(string _value)
+    {
+        if (float.TryParse(_value, out float _sfxVolume))
+        {
+            if (_sfxVolume > 100)
+            {
+                _sfxVolume = 100;
+                _sfxInputField.text = "100";
+            }
+            else if (_sfxVolume < 0)
+            {
+                _sfxVolume = 0;
+                _sfxInputField.text = "0";
+            }
+            
+            PlayerPrefs.SetFloat(_sfxHash, _sfxVolume);
+            _sfxSlider.value = _sfxVolume;
+            print(_sfxVolume);
+        }
+    }
+    
+    
     
     public void ChangeMusicVolumeSlider(float _value)
     {
@@ -159,5 +195,6 @@ public class OptionsMenuManager : MonoBehaviour
     {
         return Screen.fullScreen;
     }
+
     #endregion
 }
