@@ -21,7 +21,6 @@ public class Jumpad : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        CharacterController controller;
         AnimationAndMovementControllerTest player = collision.GetComponent<AnimationAndMovementControllerTest>();
         if (collision.gameObject.layer == this.gameObject.layer)
         {
