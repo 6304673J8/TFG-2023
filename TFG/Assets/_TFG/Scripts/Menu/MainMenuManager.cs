@@ -9,13 +9,15 @@ public class MainMenuManager : MonoBehaviour
     private bool _isCreditsActive;
     private bool _isOptionsActive;
 
-    [Header("Play Game")]
+    [Header("Play Game")] 
     [SerializeField] Button _playButton;
     [SerializeField] string _tutorialScene;
     [Header("Buttons")]
     [SerializeField] Button _optionsButton;
     [SerializeField] Button _creditsButton; 
-    [SerializeField] Button _backButton;
+    [SerializeField] Button _exitButton;
+    [SerializeField] Button _optionsBackButton;
+    [SerializeField] Button _creditsBackButton;
     [Header("Panels")]
     [SerializeField] GameObject _initialPanel;
     [SerializeField] GameObject _optionsPanel;
@@ -32,12 +34,11 @@ public class MainMenuManager : MonoBehaviour
         _isCreditsActive = false;
 
         _playButton.onClick.AddListener(Play);
-        _optionsButton.onCLick.AddListener(ToOptions);
-        _creditsButton.onCLick.AddListener(ToCredits);
-        _backButton.onCLick.AddListener(ToGoBack);
-
-        // Cursor.lockState = CursorLockMode.None;
-        //     Cursor.visible = true;
+        _optionsButton.onClick.AddListener(ToOptions);
+        _creditsButton.onClick.AddListener(ToCredits);
+        _exitButton.onClick.AddListener(ToExit);
+        _optionsBackButton.onClick.AddListener(ToGoBack);
+        _creditsBackButton.onClick.AddListener(ToGoBack);
     }
     
     public void Play()
@@ -69,22 +70,18 @@ public class MainMenuManager : MonoBehaviour
         if (_isCreditsActive)
         {
             _creditsPanel.SetActive(false);
+            _isCreditsActive = false;
         }
         else if (_isOptionsActive)
         {
             _optionsPanel.SetActive(false);
+            _isOptionsActive = false;
         }
     }
 
-    // Changes Full Screen If Active
-    public void ToggleFullScreen()
+    public void ToExit()
     {
-
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
         Debug.Log("Salir");
+        Application.Quit();
     }
 }
