@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6776642238058091627}
   m_Layer: 9
   m_Name: BocaIncendio
-  m_TagString: Blanco
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7129043246732476791}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 12.950238, y: 8.2621, z: 18.60078}
   m_Center: {x: -5.8744487e-10, y: 0.47042856, z: 6.439899}
 --- !u!54 &6776642238058091627
@@ -106,10 +114,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7129043246732476791}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -120,22 +139,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7612389192237276109}
     m_Modifications:
-    - target: {fileID: 875316542275191549, guid: 90c57827fa75db14aa8632e63a1b5f2f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 3753238037640276720, guid: 90c57827fa75db14aa8632e63a1b5f2f,
         type: 3}
       propertyPath: m_Name
       value: Agua
-      objectReference: {fileID: 0}
-    - target: {fileID: 3753238037640276720, guid: 90c57827fa75db14aa8632e63a1b5f2f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8278342693361797994, guid: 90c57827fa75db14aa8632e63a1b5f2f,
         type: 3}
@@ -193,6 +203,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90c57827fa75db14aa8632e63a1b5f2f, type: 3}
 --- !u!4 &1453724675804796812 stripped
 Transform:
@@ -200,34 +213,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7407926823022451942}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5969539097165772310 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3753238037640276720, guid: 90c57827fa75db14aa8632e63a1b5f2f,
-    type: 3}
-  m_PrefabInstance: {fileID: 7407926823022451942}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &7407926821571517275
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5969539097165772310}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 11.08
-  m_Center: {x: 0, y: 0, z: 6.26}
---- !u!114 &7407926821571517274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5969539097165772310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a577aba1740c8554fb530915ab3e2c55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
