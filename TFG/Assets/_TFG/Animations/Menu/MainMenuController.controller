@@ -55,23 +55,23 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BoubaMainMenuController
+  m_Name: MainMenuController
   serializedVersion: 5
   m_AnimatorParameters:
+  - m_Name: menuBack
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: menuIdle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: menuBack
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: menuSelected
-    m_Type: 9
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -100,6 +100,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: menuIdle
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: menuSelected
+    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: menuBack
     m_EventTreshold: 0
@@ -127,6 +130,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: menuIdle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: menuBack
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: menuSelected
@@ -217,7 +223,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.96
+  m_ExitTime: 0.75
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -233,6 +239,12 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: menuIdle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: menuBack
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: menuSelected
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3946220701779740291}

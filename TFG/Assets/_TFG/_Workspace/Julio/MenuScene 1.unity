@@ -1408,18 +1408,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2273742388492736549}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2219259338934269445 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2219259338934269447, guid: 7e3523ce80cbec54a9b6401ad9b1a0cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 2273742388492736549}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2219259338934269444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191104b1b0bda8e47a93851b76608e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2273742388492736549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1496,11 +1484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4268983637970028560, guid: e4c5878650e064bc5b49a65e2db13466,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2219259338934269445}
     - target: {fileID: 4268983638758134561, guid: e4c5878650e064bc5b49a65e2db13466,
         type: 3}
       propertyPath: m_Name
@@ -1611,26 +1594,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4268983639008017036, guid: e4c5878650e064bc5b49a65e2db13466,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2219259338934269445}
-    - target: {fileID: 4268983639164805290, guid: e4c5878650e064bc5b49a65e2db13466,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2219259338934269445}
-    - target: {fileID: 4268983639275048340, guid: e4c5878650e064bc5b49a65e2db13466,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2219259338934269445}
-    - target: {fileID: 4754306504192914078, guid: e4c5878650e064bc5b49a65e2db13466,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2219259338934269445}
     - target: {fileID: 4999493572428887407, guid: e4c5878650e064bc5b49a65e2db13466,
         type: 3}
       propertyPath: _menuAnimationManager

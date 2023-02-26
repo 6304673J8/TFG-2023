@@ -54,7 +54,8 @@ public class OptionsMenuManager : MonoBehaviour
     {
         if (_menuAnimationManager)
         {
-            _animator.SetBool("isIdle", true);
+            Debug.Log("Working MenuIdle");
+            _animator.SetBool("menuIdle", true);
         }
         UIEvents();
         LoadSettings();
@@ -72,20 +73,37 @@ public class OptionsMenuManager : MonoBehaviour
         _musicInputField.onValueChanged.AddListener(ChangeMusicVolumeInput);
         _sfxInputField.onValueChanged.AddListener(ChangeSfxVolumeInput);
     }
-    
+   
+    #region CoolAnimationTest
     //ButtonsAnimation
-    public void ButtonClick()
+    /*
+    public void AnyButtonClick()
     {
-        _animator.SetBool("isIdle", false);
-        _animator.SetBool("isReturning", false);
-        _animator.SetBool("isSelected", true);
+        _animator.SetBool("menuIdle", false);
+        _animator.SetBool("menuBack", false);
+        _animator.SetTrigger("menuSelected");
+        _animator.SetBool("menuSelected", false);
     }
     
-    public void SaveButtonClick()
+    public void GoBackButtonClick()
     {
-        _animator.SetBool("isIdle", false);
-        _animator.SetBool("isReturning", false);
-        _animator.SetBool("isSelected", true);
+        _animator.SetBool("menuIdle", false);
+        _animator.SetBool("menuSelected", false);
+        _animator.SetBool("menuBack", true);
+        _animator.SetBool("menuBack", false);
+    }
+    */
+    #endregion
+    public void AnyButtonClick()
+    {
+        _animator.SetBool("menuIdle", false);
+        _animator.SetTrigger("menuSelected");
+    }
+
+    public void GoBackButtonClick()
+    {
+        _animator.SetBool("menuIdle", false);
+        _animator.SetTrigger("menuBack");
     }
 
     public void LoadSettings()
@@ -102,7 +120,7 @@ public class OptionsMenuManager : MonoBehaviour
 
         //Set full screen
         _isFullScreen = PlayerPrefs.GetInt("FullScreen", 0) == 1;
-        _fullScreenToggle.isOn = _isFullScreen;      
+        _fullScreenToggle.isOn = _isFullScreen;    
     }
     
     #region Graphics
