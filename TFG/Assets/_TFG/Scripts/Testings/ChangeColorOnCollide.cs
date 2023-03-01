@@ -7,6 +7,7 @@ public class ChangeColorOnCollide : MonoBehaviour
     //Array In Order To Have Multiple Materials
     public Material[] material;
     Renderer rend;
+    public GameObject Rocas;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class ChangeColorOnCollide : MonoBehaviour
         else
         {
             rend.sharedMaterial = material[2];
+            Rocas.transform.position = new Vector3(-13.072f, -1.8f, 10.871f);
         }
     }
 }
