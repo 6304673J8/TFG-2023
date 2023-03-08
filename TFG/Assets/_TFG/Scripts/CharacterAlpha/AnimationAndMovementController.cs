@@ -37,6 +37,10 @@ public class AnimationAndMovementController : MonoBehaviour
     int _jumpCountHash;
     int _isIdleHash;
 
+    //Dash Values
+    [SerializeField] float forceForward = 1000;
+    [SerializeField] float forceUp = 1000;
+    
     //Variables To Store Player Input Values
     Vector2 _currentMovementInput;
     Vector3 _currentMovement;
@@ -272,6 +276,13 @@ public class AnimationAndMovementController : MonoBehaviour
     }
 
     #endregion
+
+    // Testing For Dash
+    /*void AddForceForward()
+    {
+        rb.AddForce(CamDirection() * forceForward, ForceMode.Force);
+        rb.AddForce(Vector3.up * forceUp, ForceMode.Force);
+    }*/
 
     IEnumerator JumpResetRoutine()
     {
