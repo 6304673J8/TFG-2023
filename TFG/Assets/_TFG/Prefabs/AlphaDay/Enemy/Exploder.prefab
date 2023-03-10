@@ -746,7 +746,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7349557272531560298}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ff9efaf471ad5ce4a9d5d024d5d85ab6, type: 2}
   m_CullingMode: 0
@@ -767,6 +767,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7583981198146969722}
+  - component: {fileID: 732583773966746741}
+  - component: {fileID: 7612308485039924209}
   m_Layer: 0
   m_Name: Exploder
   m_TagString: Untagged
@@ -790,6 +792,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &732583773966746741
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583981198146969723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6222869, y: 0.49976796, z: 0.4495363}
+  m_Center: {x: 0.011452794, y: 0.2097033, z: -0.007987797}
+--- !u!65 &7612308485039924209
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583981198146969723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37933326, y: 0.05905676, z: 0.31033152}
+  m_Center: {x: -0.014506857, y: 0.49764085, z: -0.020065239}
 --- !u!1 &7797039168879192787
 GameObject:
   m_ObjectHideFlags: 0

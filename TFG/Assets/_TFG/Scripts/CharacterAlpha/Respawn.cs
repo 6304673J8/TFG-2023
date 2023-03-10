@@ -5,12 +5,22 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     public float threshold;
+    private Transform Spawn;
 
     void FixedUpdate()
     {
         if (transform.position.y < threshold)
         {
-            transform.position = new Vector3(-3.94000006f, -1.15999997f, -7.51000023f);
+            transform.position = Spawn.position;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Inicio":
+                Spawn.position = new Vector3(-9.93999958f, 2.852f, 0.143f);
+            break;
         }
     }
 }
