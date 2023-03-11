@@ -11,7 +11,9 @@ public class VideoManager : MonoBehaviour
 	[SerializeField]
 	private string _sceneName;
 
-	void Awake()
+    // Play on awake defaults to true. Set it to false to avoid the url set
+    // below to auto-start playback since we're in Start().
+	void Start()
     {
         video.Play();
         video.loopPointReached += CheckOver;
