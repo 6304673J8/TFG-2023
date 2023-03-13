@@ -4,23 +4,11 @@ using UnityEngine;
 
 public class EnemyBasic : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask interactablesLayerMask;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    public GameObject collision;
+    
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Working - Killing");
         switch (other.tag)
         {
             case "Player":

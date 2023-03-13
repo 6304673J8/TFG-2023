@@ -686,6 +686,9 @@ GameObject:
   - component: {fileID: 6493678150215780967}
   - component: {fileID: 6493678150215780966}
   - component: {fileID: 1735948521}
+  - component: {fileID: 1223414419}
+  - component: {fileID: 1223414420}
+  - component: {fileID: 1223414430}
   m_Layer: 9
   m_Name: RigBouba_Sixth
   m_TagString: Player
@@ -819,7 +822,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d8290cf7abc789a408ef31df24dc9a51, type: 2}
   _playerRenderer: {fileID: 1905081644929425915}
   _testRenderer: {fileID: 6493678149542053778}
-  _colorPicked: 1
+  _colorPicked: 3
 --- !u!114 &1735948521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +836,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList: []
+--- !u!114 &1223414419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094579135672314197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21b58c12ed63ed4bb0ca3ca319973b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorTest: {fileID: 3767013813280625851}
+  BodyLayer: {fileID: 8094579135672314197}
+--- !u!114 &1223414420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094579135672314197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76446b6090a7b024c8d886f8c15e8a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hornColors: []
+--- !u!114 &1223414430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094579135672314197}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06a5428faef76e439fee2ada67e2419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushPower: 2
 --- !u!1 &8114376972174225616
 GameObject:
   m_ObjectHideFlags: 0

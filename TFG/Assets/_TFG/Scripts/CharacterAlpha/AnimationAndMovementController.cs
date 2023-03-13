@@ -221,7 +221,7 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         if (!_isJumping && _characterController.isGrounded && _isJumpPressed)
         {
-            if (_jumpCount < 3 && _currentJumpResetRoutine != null)
+            if (_jumpCount < 2 && _currentJumpResetRoutine != null)
             {
                 StopCoroutine(_currentJumpResetRoutine);
             }
