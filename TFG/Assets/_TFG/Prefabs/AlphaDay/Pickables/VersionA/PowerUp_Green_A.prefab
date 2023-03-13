@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 8223493904255586233}
   - component: {fileID: 3466029242184951535}
   m_Layer: 10
-  m_Name: PowerUp_Green
+  m_Name: PowerUp_Green_A
   m_TagString: Pick_Color_Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

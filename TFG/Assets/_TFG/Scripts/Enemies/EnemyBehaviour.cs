@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBehaviour : MonoBehaviour
 {
     [Header("NavMesh variables")]
     [SerializeField] float acceleration;
     [SerializeField] float deceleration;
-    protected UnityEngine.AI.NavMeshAgent agent;
+    protected NavMeshAgent agent;
 
     [Header("Player detection variables")]
     [SerializeField] protected LayerMask playerMask;
@@ -24,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
         isAttacking = false;
         player = GameObject.FindGameObjectWithTag("Player");
         dangerManager = player.GetComponent<DangerManager>();
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         canAttack = true;
     }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 828680912392123221}
   - component: {fileID: 2103221002454283036}
   m_Layer: 8
-  m_Name: Pickable_Coin
+  m_Name: Pickable_Coin_A
   m_TagString: Pick_Color_Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

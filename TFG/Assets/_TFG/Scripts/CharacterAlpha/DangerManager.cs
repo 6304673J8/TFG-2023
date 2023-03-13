@@ -27,7 +27,7 @@ public class DangerManager : MonoBehaviour
         }
     }
 
-    public bool GetIsInCombat()
+    public bool GetIsInDanger()
     {
         return inDanger;
     }

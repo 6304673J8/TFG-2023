@@ -1,7 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(SphereCollider))]
 public class ChaserBehaviour : EnemyBehaviour
 {
     [Header("Lunge variables")]
@@ -16,7 +17,7 @@ public class ChaserBehaviour : EnemyBehaviour
     private float _initYPos;
     Animator animator;
 
-    UnityEngine.AI.NavMeshPath lungePath;
+    NavMeshPath lungePath;
 
     private bool isLunging;
 
