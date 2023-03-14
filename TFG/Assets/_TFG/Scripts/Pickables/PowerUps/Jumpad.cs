@@ -21,12 +21,13 @@ public class Jumpad : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        AnimationAndMovementControllerTest player = collision.GetComponent<AnimationAndMovementControllerTest>();
+        //PowerUpHandler player = collision.GetComponent<PowerUpHandler>();
+        AnimationAndMovementController player = collision.GetComponent<AnimationAndMovementController>();
         if (collision.gameObject.layer == this.gameObject.layer)
         {
             Debug.Log("colisiona");
 
-            player.ApplyImpulse();
+            player.ApplyImpulse(impulse);
             /*controller = collision.GetComponent<CharacterController>();
             Debug.Log("colisiona");
             moveDirection =  impulse * jumpSpeed;

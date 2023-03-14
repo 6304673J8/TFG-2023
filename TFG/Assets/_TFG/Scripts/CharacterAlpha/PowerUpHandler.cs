@@ -103,6 +103,6 @@ public class PowerUpHandler : MonoBehaviour
     {
         return boxObjectHoldPoint;
     }
-    
+
     #endregion
 }

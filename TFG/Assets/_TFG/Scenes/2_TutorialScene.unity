@@ -529,7 +529,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250840657}
-  m_LocalRotation: {x: 0.1891075, y: 1e-45, z: 0, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910751, y: 0, z: 0, w: 0.9819564}
   m_LocalPosition: {x: 39.07, y: 6.5234385, z: -11.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -617,13 +617,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291174226}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4c93a10c0a9a6749a2878dd4c1f7747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSpeed: 4.33
-  impulse: {x: 0, y: 18.46, z: 0}
+  impulse: {x: 0, y: 50, z: 0}
 --- !u!114 &291174231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291174226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab963f29189feb64691ba7d598221865, type: 3}
   m_Name: 
@@ -645,7 +645,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291174226}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 63.95555, y: 60.765274, z: 22.369572}
@@ -687,7 +687,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh92142
+  m_Name: pb_Mesh32180
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1004,7 +1004,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435588281}
-  m_LocalRotation: {x: 0.1891075, y: 1e-45, z: 0, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910751, y: 0, z: 0, w: 0.9819564}
   m_LocalPosition: {x: 39.07, y: 6.5234385, z: -11.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1262,7 +1262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 4, z: -10}
-  m_XDamping: 1
+  m_XDamping: 6.16
   m_YDamping: 1
   m_ZDamping: 1
   m_AngularDampingMode: 0
@@ -1286,14 +1286,14 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
+  m_HorizontalDamping: 16.41
+  m_VerticalDamping: 16.41
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_DeadZoneWidth: 0.5
+  m_DeadZoneHeight: 0.5
+  m_SoftZoneWidth: 0.64
+  m_SoftZoneHeight: 2
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -4415,7 +4415,7 @@ PrefabInstance:
     - target: {fileID: 8203552761535274719, guid: 289ff45a1444d7845b7d1fa3da68edc8,
         type: 3}
       propertyPath: rgbSwapBase
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8525989988410685744, guid: 289ff45a1444d7845b7d1fa3da68edc8,
         type: 3}

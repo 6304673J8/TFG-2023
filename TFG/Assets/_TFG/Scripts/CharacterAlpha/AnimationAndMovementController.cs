@@ -325,4 +325,11 @@ public class AnimationAndMovementController : MonoBehaviour
     }
 
     #endregion
+
+    public void ApplyImpulse(Vector3 impulse)
+    {
+        if (_currentMovement.x == 0 || _currentMovement.x != 0)
+            _currentMovement.y = impulse.y;
+            //_currentMovement.y = _initialJumpVelocity * 2f;
+    }
 }
