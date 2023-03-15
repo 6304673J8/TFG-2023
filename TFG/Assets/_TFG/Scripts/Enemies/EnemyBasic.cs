@@ -7,25 +7,27 @@ public class EnemyBasic : MonoBehaviour
     [SerializeField]
     private LayerMask interactablesLayerMask;
 
-    public GameObject BlackZone;
-    public GameObject ColorZone;
+    public GameObject CajaVerde;
 
+    
+   
     private bool Muerto;
 
     // Start is called before the first frame update
     void Start()
     {
         Muerto = false;
-        BlackZone.SetActive(true);
+ 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Muerto == true)
+        CajaVerde.GetComponent<Renderer>().material.SetFloat("Transicion", 0f);
+
+        if (Muerto == true)
         {
-            BlackZone.SetActive(false);
-            ColorZone.SetActive(true);
+         
         }
  
     }
@@ -39,7 +41,7 @@ public class EnemyBasic : MonoBehaviour
                 if (other.gameObject.layer == this.gameObject.layer)
                 {
                     Muerto = true;
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
                 break;
         }
