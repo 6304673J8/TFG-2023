@@ -7,9 +7,7 @@ public class EnemyBasic : MonoBehaviour
     [SerializeField]
     private LayerMask interactablesLayerMask;
 
-    public GameObject CajaVerde;
-
-    
+    public GameObject Objeto1;
    
     private bool Muerto;
 
@@ -23,7 +21,7 @@ public class EnemyBasic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CajaVerde.GetComponent<Renderer>().material.SetFloat("Transicion", 0f);
+        
 
         if (Muerto == true)
         {
@@ -40,6 +38,9 @@ public class EnemyBasic : MonoBehaviour
                 
                 if (other.gameObject.layer == this.gameObject.layer)
                 {
+                    Objeto1.GetComponent<MeshRenderer>().material.SetFloat("_Transicion", 1);
+                    Objeto1.GetComponent<Rigidbody>().isKinematic = false;
+
                     Muerto = true;
                     //Destroy(gameObject);
                 }

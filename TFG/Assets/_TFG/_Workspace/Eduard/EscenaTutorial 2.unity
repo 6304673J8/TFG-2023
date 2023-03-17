@@ -791,7 +791,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh82626
+  m_Name: pb_Mesh66592
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -971,6 +971,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3135534141479884157, guid: a59a505a282be584680abf356f1ad77a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135534141479884157, guid: a59a505a282be584680abf356f1ad77a,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3173101278364070004, guid: a59a505a282be584680abf356f1ad77a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1046,6 +1056,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 17feba6db2ed50c45b1b4564676e04c4, type: 2}
+    - target: {fileID: 5619893054683367898, guid: a59a505a282be584680abf356f1ad77a,
+        type: 3}
+      propertyPath: Color
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a59a505a282be584680abf356f1ad77a, type: 3}
 --- !u!1 &397396487 stripped
@@ -3472,7 +3487,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 11070985181a01b42a4e2bb7b2a636ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.46
+      value: 2.32
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11070985181a01b42a4e2bb7b2a636ad,
         type: 3}
@@ -3482,7 +3497,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 11070985181a01b42a4e2bb7b2a636ad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.27
+      value: 2.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 11070985181a01b42a4e2bb7b2a636ad,
         type: 3}
@@ -5103,6 +5118,11 @@ PrefabInstance:
       propertyPath: points.Array.data[1]
       value: 
       objectReference: {fileID: 1414626067}
+    - target: {fileID: 877490514383418151, guid: e9379513c3b68804f908f7c9d915ca78,
+        type: 3}
+      propertyPath: Objeto1
+      value: 
+      objectReference: {fileID: 861942016}
     - target: {fileID: 877490514383418151, guid: e9379513c3b68804f908f7c9d915ca78,
         type: 3}
       propertyPath: BlackZone
