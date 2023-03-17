@@ -750,13 +750,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forceForward: 1000
   forceUp: 1000
+  _isRunPressed: 0
   _isDashPressed: 0
   _runBaseSpeed: 2
   _runMultiplier: 4
+  dashSpeed: 3
+  dashTime: 0.25
   _isJumping: 0
   _isJumpPressed: 0
   _maxJumpHeight: 1
   _maxJumpTime: 0.5
+  _maxJumpCount: 1
 --- !u!143 &6493678150215780985
 CharacterController:
   m_ObjectHideFlags: 0
