@@ -32,6 +32,7 @@ public class AnimationAndMovementController : MonoBehaviour
 
     //Variables To Store Optimized Setter/Getter parameter IDs
     int _isWalkingHash;
+    int _isRunningHash;
     int _isDashingHash;
     int _isJumpingHash;
     int _jumpCountHash;
@@ -47,6 +48,8 @@ public class AnimationAndMovementController : MonoBehaviour
     Vector3 _currentRunMovement;
     Vector3 _appliedMovement;
     bool _isMovementPressed;
+    [SerializeField]
+    bool _isRunPressed;
     [SerializeField]
     bool _isDashPressed;
 
@@ -79,6 +82,8 @@ public class AnimationAndMovementController : MonoBehaviour
 
     //Jumping Extras Test
     int _jumpCount = 0;
+    [SerializeField]
+    int _maxJumpCount = 0;
     Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
     Dictionary<int, float> _initialJumpGravities = new Dictionary<int, float>();
     Coroutine _currentJumpResetRoutine = null;
@@ -92,6 +97,7 @@ public class AnimationAndMovementController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         _isWalkingHash = Animator.StringToHash("isWalking");
+        _isRunningHash = Animator.StringToHash("isRunning");
         _isDashingHash = Animator.StringToHash("isDashing");
         _isJumpingHash = Animator.StringToHash("isJumping");
         _isIdleHash = Animator.StringToHash("isIdle");
@@ -103,8 +109,11 @@ public class AnimationAndMovementController : MonoBehaviour
         _playerInputs.CharacterControls.Move.performed += OnMovementInput;
         _playerInputs.CharacterControls.Move.canceled += OnMovementInput;
         //RUN
-        _playerInputs.CharacterControls.Run.started += OnDashInput;
-        _playerInputs.CharacterControls.Run.canceled += OnDashInput;
+        _playerInputs.CharacterControls.Run.started += OnRunInput;
+        _playerInputs.CharacterControls.Run.canceled += OnRunInput;
+        //DASH
+        _playerInputs.CharacterControls.Dash.started += OnDashInput;
+        _playerInputs.CharacterControls.Dash.started += OnDashInput;
         //JUMP
         _playerInputs.CharacterControls.Jump.started += OnJumpInput;
         _playerInputs.CharacterControls.Jump.canceled += OnJumpInput;
@@ -141,6 +150,11 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         _isJumpPressed = context.ReadValueAsButton();
         Debug.Log(_isJumpPressed);
+    }
+
+    void OnRunInput(InputAction.CallbackContext context)
+    {
+        _isRunPressed = context.ReadValueAsButton();
     }
 
     void OnDashInput(InputAction.CallbackContext context)
@@ -185,6 +199,7 @@ public class AnimationAndMovementController : MonoBehaviour
         bool _isWalking = _animator.GetBool("isWalking");
         //bool _isRunning = _animator.GetBool("isRunning");
         bool _isJumping = _animator.GetBool("isJumping");
+        bool _isRunning = _animator.GetBool("isRunning");
         bool _isDashing = _animator.GetBool("isDashing");
         bool _isIdle = _animator.GetBool("isIdle");
 
@@ -198,6 +213,14 @@ public class AnimationAndMovementController : MonoBehaviour
             _animator.SetBool(_isWalkingHash, false);
         }
 
+        if ((_isMovementPressed && _isRunPressed) && !_isRunning)
+        {
+            _animator.SetBool(_isRunningHash, true);
+        }
+        else if ((!_isMovementPressed || !_isRunPressed) && _isRunning)
+        {
+            _animator.SetBool(_isRunningHash, false);
+        }
         if ((_isMovementPressed && _isDashPressed) && !_isDashing)
         {
             _animator.SetBool(_isDashingHash, true);
@@ -205,7 +228,7 @@ public class AnimationAndMovementController : MonoBehaviour
         else if ((!_isMovementPressed || !_isDashPressed) && _isDashing)
         {
             _animator.SetBool(_isDashingHash, false);
-        } 
+        }
         /*
         if ((_isMovementPressed && _isJumpPressed) && !isRunning)
         {
@@ -221,7 +244,7 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         if (!_isJumping && _characterController.isGrounded && _isJumpPressed)
         {
-            if (_jumpCount < 2 && _currentJumpResetRoutine != null)
+            if (_jumpCount < _maxJumpCount && _currentJumpResetRoutine != null)
             {
                 StopCoroutine(_currentJumpResetRoutine);
             }
@@ -295,7 +318,7 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         HandleRotation();
         HandleAnimation();
-        if (_isDashPressed)
+        if (_isRunPressed)
         {
             _appliedMovement.x = _currentRunMovement.x;
             _appliedMovement.z = _currentRunMovement.z;
