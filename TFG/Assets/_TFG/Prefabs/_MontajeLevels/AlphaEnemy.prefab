@@ -748,9 +748,8 @@ GameObject:
   - component: {fileID: 434546747249391440}
   - component: {fileID: 877490514383418150}
   - component: {fileID: 877490514383418151}
-  - component: {fileID: 877490514383418144}
-  - component: {fileID: 877490514383418332}
   - component: {fileID: 864347635371961175}
+  - component: {fileID: 5251445796572766660}
   m_Layer: 6
   m_Name: AlphaEnemy
   m_TagString: Untagged
@@ -815,42 +814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692df665ddb349a4a88b893c30976381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &877490514383418144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7283110384252457822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd8713957fd0779429a6ad1ae3440ca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 1.5
---- !u!114 &877490514383418332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7283110384252457822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f2403c792540449b8b70589db7e83e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _materials:
-  - {fileID: 2100000, guid: cc5bf765f1b1df24889b295f2e8e5a35, type: 2}
-  - {fileID: 2100000, guid: 29f04b49f93ba744e962df16c9a716a6, type: 2}
-  - {fileID: 2100000, guid: cc5bf765f1b1df24889b295f2e8e5a35, type: 2}
-  - {fileID: 2100000, guid: c4166ad334f4a5d478db27eb1d47dcc3, type: 2}
-  _entityRenderer: {fileID: 0}
-  _colorPicked: 3
-  rgbSwapBase: 0
+  interactablesLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  Objeto1: {fileID: 0}
 --- !u!65 &864347635371961175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -864,6 +831,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.40110764, y: 0.0724835, z: 0.3556378}
   m_Center: {x: 0.034211013, y: 0.46575865, z: -0.013571102}
+--- !u!114 &5251445796572766660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283110384252457822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693522f75b889af43b31cfe90c6d6598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allwayPoints: []
+  rotationSpeed: 0.5
+  movementSpeed: 0.5
+  currentTarget: 0
 --- !u!1 &7548525370093356230
 GameObject:
   m_ObjectHideFlags: 0

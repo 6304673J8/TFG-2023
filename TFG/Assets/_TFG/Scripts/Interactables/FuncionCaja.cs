@@ -11,7 +11,7 @@ public class FuncionCaja : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+        m_Rigidbody = GetComponent<Rigidbody>();
         dissolveMat.SetFloat("_Transicion", Color);
     }
 

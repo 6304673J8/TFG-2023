@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    public float threshold;
-    private Transform Spawn;
-
-    void FixedUpdate()
+    void Update()
     {
-        if (transform.position.y < threshold)
+        if (Input.GetKey(KeyCode.R))
         {
-            transform.position = Spawn.position;
+            transform.position = CheckPoint.GetActiveCheckPointPosition();
         }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
         {
-            case "Inicio":
-                Spawn.position = new Vector3(-9.93999958f, 2.852f, 0.143f);
-            break;
+
         }
     }
 }
