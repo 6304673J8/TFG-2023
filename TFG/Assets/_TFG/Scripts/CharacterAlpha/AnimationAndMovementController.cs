@@ -52,7 +52,7 @@ public class AnimationAndMovementController : MonoBehaviour
     bool _isRunPressed;
     [SerializeField]
     bool _isDashPressed;
-
+    bool _isDashing = false;
     //Constants
     private float _rotationFactorPerFrame = 15.0f;
     [SerializeField]
@@ -66,6 +66,9 @@ public class AnimationAndMovementController : MonoBehaviour
     //Gravity 
     private float _gravity = -9.8f;
     private float _groundedGravity = -0.05f;
+
+    public float dashSpeed;
+    public float dashTime;
 
     //Jump Variables
     [SerializeField]
@@ -87,6 +90,7 @@ public class AnimationAndMovementController : MonoBehaviour
     Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
     Dictionary<int, float> _initialJumpGravities = new Dictionary<int, float>();
     Coroutine _currentJumpResetRoutine = null;
+    Coroutine _currentDashResetRoutine = null;
 
     #region Initialize
 
@@ -130,17 +134,17 @@ public class AnimationAndMovementController : MonoBehaviour
         //This Was Originally _maxJumpHeight + Double
         float _secondJumpGravity = (-2 * (_maxJumpHeight + 1)) / Mathf.Pow((_timeToApex * 1.25f), 2);
         float _secondJumpInitialVelocity = (2 * (_maxJumpHeight + 1)) / (_timeToApex * 1.25f);
-        float _thirdJumpGravity = (-2 * (_maxJumpHeight + 2)) / Mathf.Pow((_timeToApex * 1.5f), 2);
-        float _thirdJumpInitialVelocity = (2 * (_maxJumpHeight + 2)) / (_timeToApex * 1.5f);
+       // float _thirdJumpGravity = (-2 * (_maxJumpHeight + 2)) / Mathf.Pow((_timeToApex * 1.5f), 2);
+        //float _thirdJumpInitialVelocity = (2 * (_maxJumpHeight + 2)) / (_timeToApex * 1.5f);
 
         _initialJumpVelocities.Add(1, _initialJumpVelocity);
         _initialJumpVelocities.Add(2, _secondJumpInitialVelocity);
-        _initialJumpVelocities.Add(3, _thirdJumpInitialVelocity);
+       // _initialJumpVelocities.Add(3, _thirdJumpInitialVelocity);
 
         _initialJumpGravities.Add(0, _gravity);
         _initialJumpGravities.Add(1, _gravity);
         _initialJumpGravities.Add(2, _secondJumpGravity);
-        _initialJumpGravities.Add(3, _thirdJumpGravity);
+        //_initialJumpGravities.Add(3, _thirdJumpGravity);
     }
 
     #endregion
@@ -239,7 +243,66 @@ public class AnimationAndMovementController : MonoBehaviour
             _animator.SetBool(_isRunningHash, false);
         }*/
     }
+    void HandleDash()
+    {
+        if (!_isDashing && !_characterController.isGrounded && _isDashPressed)
+        {
+            if (_currentDashResetRoutine != null)
+            {
+                StopCoroutine(_currentJumpResetRoutine);
+            }
+            _animator.SetBool("isDashing", true);
+            //_isDashAnimating = true;
+            _isDashing = true;
+            _characterController.Move(_appliedMovement * dashSpeed * Time.deltaTime);
 
+            _currentMovement.x = _currentMovement.x * dashSpeed * Time.deltaTime;
+
+            _appliedMovement.y = _currentMovement.x * dashSpeed * Time.deltaTime;
+        }
+        else if (!_isDashPressed && _isDashing && _characterController.isGrounded)
+        {
+            _isJumping = false;
+        }
+    }
+
+    /*
+     void HandleGravity()
+    {
+        bool _isFalling = _currentMovement.y <= 0.0f || !_isJumpPressed;
+        float _fallMultiplier = 2.0f;
+
+        if (_characterController.isGrounded)
+        {
+            if (_isJumpAnimating)
+            {
+                _animator.SetBool(_isJumpingHash, false);
+                _isJumpAnimating = false;
+                _currentJumpResetRoutine = StartCoroutine(JumpResetRoutine());
+                if (_jumpCount == 3)
+                {
+                    _jumpCount = 0;
+                    _animator.SetInteger(_jumpCountHash, _jumpCount);
+                }
+            }
+            _currentMovement.y = _groundedGravity;
+            _appliedMovement.y = _groundedGravity;
+        }
+        else if (_isFalling)
+        {
+            float _previousYVelocity = _currentMovement.y;
+            _currentMovement.y = _currentMovement.y + (_initialJumpGravities[_jumpCount] * _fallMultiplier * Time.deltaTime);
+            //Makes Character Move
+            _appliedMovement.y = Mathf.Max((_previousYVelocity + _currentMovement.y) * .5f, -20.0f);
+        }
+        else
+        {
+            float _previousYVelocity = _currentMovement.y;
+            _currentMovement.y = _currentMovement.y + (_initialJumpGravities[_jumpCount] * Time.deltaTime);
+            _appliedMovement.y = (_previousYVelocity + _currentMovement.y) * .5f;
+        }
+    }
+     */
     void HandleJump()
     {
         if (!_isJumping && _characterController.isGrounded && _isJumpPressed)
@@ -313,6 +376,12 @@ public class AnimationAndMovementController : MonoBehaviour
         _jumpCount = 0;
     }
 
+    IEnumerator DashResetRoutine()
+    {
+        yield return new WaitForSeconds(dashTime);
+        _isDashing = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -329,7 +398,7 @@ public class AnimationAndMovementController : MonoBehaviour
             _appliedMovement.z = _currentMovement.z;
         }
         _characterController.Move(_appliedMovement * Time.deltaTime);
-
+        HandleDash();
         HandleGravity();
         HandleJump();
     }
