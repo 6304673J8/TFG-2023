@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1992496868033396689}
   - component: {fileID: 4342088042172222235}
   - component: {fileID: 3135534141479884157}
+  - component: {fileID: 5619893054683367898}
   - component: {fileID: 3135534141479884154}
   m_Layer: 10
   m_Name: CajaVerde
@@ -101,6 +102,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5619893054683367898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829050434625874638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3146f8e6652b94b81c5672219fce52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveMat: {fileID: 2100000, guid: c6c45a47078e3564085d7131b800dd2b, type: 2}
+  Color: 0
 --- !u!65 &3135534141479884154
 BoxCollider:
   m_ObjectHideFlags: 0
