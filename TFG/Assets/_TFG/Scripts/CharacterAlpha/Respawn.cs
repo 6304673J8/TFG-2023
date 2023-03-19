@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
+    private bool TocandoCharco;
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.R) || TocandoCharco == true)
         {
             transform.position = CheckPoint.GetActiveCheckPointPosition();
         }
@@ -16,10 +17,14 @@ public class Respawn : MonoBehaviour
     {
         if (other.tag == "Muerte")
         {
-            Debug.Log("Muerto");
-            gameObject.transform.position = CheckPoint.GetActiveCheckPointPosition();
+            TocandoCharco = true;
+        }
+        else
+        {
+            TocandoCharco = false;
         }
     }
+
 }
 
     

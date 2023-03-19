@@ -9,7 +9,7 @@ public class EnemyBasic : MonoBehaviour
 
     public GameObject Objeto1;
 
-    JumpadScript Trampolin;
+    Jumpad Trampolin;
     public bool _Trampolin;
  
    
@@ -18,8 +18,8 @@ public class EnemyBasic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
- 
+       
+
     }
 
     // Update is called once per frame
@@ -53,11 +53,9 @@ public class EnemyBasic : MonoBehaviour
     {
         Objeto1.GetComponent<MeshRenderer>().material.SetFloat("_Transicion", 1);
         Objeto1.GetComponent<Rigidbody>().isKinematic = false;
-
-        if(_Trampolin == true)
-        {
-            Trampolin.Color = 1;
-        }
         
+
+
+
     }
 }

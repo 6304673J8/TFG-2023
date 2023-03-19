@@ -8,6 +8,10 @@ public class Jumpad : MonoBehaviour
     public float jumpSpeed;
     public Vector3 impulse;
     private Vector3 moveDirection;
+
+    public Material dissolveMat;
+    public float Color;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +20,7 @@ public class Jumpad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        dissolveMat.SetFloat("_Transicion", Color);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -26,8 +30,11 @@ public class Jumpad : MonoBehaviour
         if (collision.gameObject.layer == this.gameObject.layer)
         {
             Debug.Log("colisiona");
-
-            player.ApplyImpulse(impulse);
+            if (Color == 1)
+            {
+                player.ApplyImpulse(impulse);
+            }
+ 
             /*controller = collision.GetComponent<CharacterController>();
             Debug.Log("colisiona");
             moveDirection =  impulse * jumpSpeed;

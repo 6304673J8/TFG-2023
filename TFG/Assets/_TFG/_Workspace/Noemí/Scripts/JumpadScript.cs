@@ -28,9 +28,11 @@ public class JumpadScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player = collision.gameObject;
+            
+            
             if(Color == 1)
             {
+                player = collision.gameObject;
                 Jump();
             }
             
