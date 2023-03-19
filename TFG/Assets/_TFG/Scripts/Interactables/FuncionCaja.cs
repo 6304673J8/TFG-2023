@@ -22,7 +22,7 @@ public class FuncionCaja : MonoBehaviour
 
         if (Color == 0)
         {
-            m_Rigidbody.isKinematic = true;  
+            //m_Rigidbody.isKinematic = true;  
         }
     }
 }

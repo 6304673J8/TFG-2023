@@ -8,13 +8,17 @@ public class EnemyBasic : MonoBehaviour
     private LayerMask interactablesLayerMask;
 
     public GameObject Objeto1;
+
+    JumpadScript Trampolin;
+    public bool _Trampolin;
+ 
    
     private bool Muerto;
 
     // Start is called before the first frame update
     void Start()
     {
-        Muerto = false;
+    
  
     }
 
@@ -25,7 +29,7 @@ public class EnemyBasic : MonoBehaviour
 
         if (Muerto == true)
         {
-         
+            Destroy(gameObject);
         }
  
     }
@@ -38,13 +42,22 @@ public class EnemyBasic : MonoBehaviour
                 
                 if (other.gameObject.layer == this.gameObject.layer)
                 {
-                    Objeto1.GetComponent<MeshRenderer>().material.SetFloat("_Transicion", 1);
-                    Objeto1.GetComponent<Rigidbody>().isKinematic = false;
-
                     Muerto = true;
-                    //Destroy(gameObject);
+                    Morir();
                 }
                 break;
         }
+    }
+
+    public void Morir()
+    {
+        Objeto1.GetComponent<MeshRenderer>().material.SetFloat("_Transicion", 1);
+        Objeto1.GetComponent<Rigidbody>().isKinematic = false;
+
+        if(_Trampolin == true)
+        {
+            Trampolin.Color = 1;
+        }
+        
     }
 }

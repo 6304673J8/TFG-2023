@@ -12,11 +12,12 @@ public class Respawn : MonoBehaviour
         }
         
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        switch (other.tag)
+        if (other.tag == "Muerte")
         {
-
+            Debug.Log("Muerto");
+            gameObject.transform.position = CheckPoint.GetActiveCheckPointPosition();
         }
     }
 }
