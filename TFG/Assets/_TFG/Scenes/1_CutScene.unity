@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   video: {fileID: 2055361413}
-  _sceneName: TutorialScene
+  _sceneName: 2_TutorialSceneCinemachine
 --- !u!4 &734695561
 Transform:
   m_ObjectHideFlags: 0

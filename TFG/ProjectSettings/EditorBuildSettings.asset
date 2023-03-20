@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_TFG/Scenes/0_CutScene.unity
-    guid: 3466d3beb294f2b408e0d96e89df23c1
-  - enabled: 1
-    path: Assets/_TFG/Scenes/1_MenuScene.unity
+    path: Assets/_TFG/Scenes/0_MenuScene.unity
     guid: 54fd8e9754a3f3f4796febffc5278737
+  - enabled: 1
+    path: Assets/_TFG/Scenes/1_CutScene.unity
+    guid: 3466d3beb294f2b408e0d96e89df23c1
   - enabled: 1
     path: Assets/_TFG/Scenes/2_TutorialSceneCinemachine.unity
     guid: ada9b1815728d52439af4923d091c8ff

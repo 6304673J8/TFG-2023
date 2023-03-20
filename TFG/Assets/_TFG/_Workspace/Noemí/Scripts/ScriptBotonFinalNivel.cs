@@ -8,6 +8,7 @@ public class ScriptBotonFinalNivel : MonoBehaviour
     public GameObject Boton;
     public ParticleSystem confeti;
     public Material botonActivado;
+    public float delay;
     [SerializeField] string _nextScene;
 
     void OnCollisionEnter(Collision collision)
@@ -22,7 +23,7 @@ public class ScriptBotonFinalNivel : MonoBehaviour
 
     private IEnumerator LoadNextScene(string levelName)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(levelName);
     }
 }

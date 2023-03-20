@@ -545,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 4268983638634141130, guid: e4c5878650e064bc5b49a65e2db13466,
         type: 3}
       propertyPath: _tutorialScene
-      value: 2_TutorialSceneCinemachine
+      value: 1_CutScene
       objectReference: {fileID: 0}
     - target: {fileID: 4268983638758134561, guid: e4c5878650e064bc5b49a65e2db13466,
         type: 3}
