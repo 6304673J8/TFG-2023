@@ -6,7 +6,13 @@ public class EnemyBasic : MonoBehaviour
 {
     public GameObject Objeto1; 
     private bool Muerto;
-    
+    private Cinemachine.CinemachineImpulseSource cameraShake;
+
+    private void Awake()
+    {
+        cameraShake = GetComponent<Cinemachine.CinemachineImpulseSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +39,7 @@ public class EnemyBasic : MonoBehaviour
 
     public void Morir()
     {
+        cameraShake.GenerateImpulse();
         Objeto1.GetComponent<ReturnColorToObject>().StartChanging();
     }
 }
