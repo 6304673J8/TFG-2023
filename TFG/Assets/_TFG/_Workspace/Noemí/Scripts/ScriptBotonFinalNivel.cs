@@ -1,31 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScriptBotonFinalNivel : MonoBehaviour
 {
     public GameObject Boton;
     public ParticleSystem confeti;
     public Material botonActivado;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] string _nextScene;
+
+    void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Interactable")) //check the int value in layer manager(User Defined starts at 8) 
+        {
+            Boton.GetComponent<MeshRenderer>().material = botonActivado;
+            Instantiate(confeti, transform.position, Quaternion.identity);
+            StartCoroutine(LoadNextScene(_nextScene));
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator LoadNextScene(string levelName)
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-      if(other.CompareTag("Player")) 
-      {
-        
-        Boton.GetComponent<MeshRenderer> ().material = botonActivado;
-        Instantiate(confeti, transform.position, Quaternion.identity);
-      }
+        yield return new WaitForSeconds(0.3f);
+        SceneManager.LoadScene(levelName);
     }
 }

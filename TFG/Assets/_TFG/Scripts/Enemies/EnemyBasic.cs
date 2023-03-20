@@ -4,34 +4,16 @@ using UnityEngine;
 
 public class EnemyBasic : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask interactablesLayerMask;
-
-    public GameObject Objeto1;
-
-    Jumpad Trampolin;
-    public bool _Trampolin;
- 
-   
+    public GameObject Objeto1; 
     private bool Muerto;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
-        
-
         if (Muerto == true)
         {
             Destroy(gameObject);
         }
- 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,11 +33,6 @@ public class EnemyBasic : MonoBehaviour
 
     public void Morir()
     {
-        Objeto1.GetComponent<MeshRenderer>().material.SetFloat("_Transicion", 1);
-        Objeto1.GetComponent<Rigidbody>().isKinematic = false;
-        
-
-
-
+        Objeto1.GetComponent<ReturnColorToObject>().StartChanging();
     }
 }

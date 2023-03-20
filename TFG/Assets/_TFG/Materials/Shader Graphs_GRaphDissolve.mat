@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_GRaphDissolve2
+  m_Name: Shader Graphs_GRaphDissolve
   m_Shader: {fileID: -6465566751694194690, guid: 72f320daa00dcc3489ba7d95b44db0a1,
     type: 3}
   m_ValidKeywords: []
@@ -50,7 +50,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0
-    - _Transicion: 1.0000001
+    - _Transicion: 0
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
