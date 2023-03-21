@@ -9,10 +9,11 @@ public class Respawn : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R) || TocandoCharco == true)
         {
-            transform.position = CheckPoint.GetActiveCheckPointPosition();
+            transform.position = Checkpoint.GetActiveCheckPointPosition();
         }
         
     }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Muerte")
@@ -26,5 +27,3 @@ public class Respawn : MonoBehaviour
     }
 
 }
-
-    

@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CheckPoint : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
-    #region Public Variables
-
     public bool Activated = false;
-
-    #endregion
 
     #region Private Variables
 
@@ -35,7 +31,7 @@ public class CheckPoint : MonoBehaviour
             foreach (GameObject cp in CheckPointsList)
             {
 
-                if (cp.GetComponent<CheckPoint>().Activated)
+                if (cp.GetComponent<Checkpoint>().Activated)
                 {
                     result = cp.transform.position;
                     break;
@@ -55,7 +51,7 @@ public class CheckPoint : MonoBehaviour
 
         foreach (GameObject cp in CheckPointsList)
         {
-            cp.GetComponent<CheckPoint>().Activated = false;
+            cp.GetComponent<Checkpoint>().Activated = false;
             // cp.GetComponent<Animator>().SetBool("Active", false);
         }
 
@@ -69,7 +65,7 @@ public class CheckPoint : MonoBehaviour
     {
         //thisAnimator = GetComponent<Animator>();
 
-        CheckPointsList = GameObject.FindGameObjectsWithTag("Charco").ToList();
+        CheckPointsList = GameObject.FindGameObjectsWithTag("Checkpoint").ToList();
     }
 
     void OnTriggerEnter(Collider other)

@@ -15,6 +15,10 @@ TagManager:
   - Blanco
   - FxTemporaire
   - Enemy
+  - Charco
+  - Muerte
+  - Inicio
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
