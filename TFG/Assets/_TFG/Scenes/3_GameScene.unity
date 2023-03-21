@@ -610,6 +610,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5251445796572766660, guid: e9379513c3b68804f908f7c9d915ca78,
+        type: 3}
+      propertyPath: allwayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 359630097}
+    - target: {fileID: 5251445796572766660, guid: e9379513c3b68804f908f7c9d915ca78,
+        type: 3}
+      propertyPath: allwayPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 24450308}
     - target: {fileID: 5576448424027069336, guid: e9379513c3b68804f908f7c9d915ca78,
         type: 3}
       propertyPath: m_Layer
@@ -2863,7 +2873,7 @@ PrefabInstance:
     - target: {fileID: 6917347294406794855, guid: 17c0760feee9b4b44b10070da04e80a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18910751
+      value: 0.1891075
       objectReference: {fileID: 0}
     - target: {fileID: 6917347294406794855, guid: 17c0760feee9b4b44b10070da04e80a7,
         type: 3}
@@ -5634,7 +5644,7 @@ PrefabInstance:
     - target: {fileID: 3768453094963639301, guid: 78e24055a9894de46accbc3d88823b14,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18910751
+      value: 0.1891075
       objectReference: {fileID: 0}
     - target: {fileID: 3768453094963639301, guid: 78e24055a9894de46accbc3d88823b14,
         type: 3}
