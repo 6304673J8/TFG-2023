@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScriptBotonFinalNivel : MonoBehaviour
+public class ScriptBotonFinalNivel1_Azul : MonoBehaviour
 {
     public GameObject Boton;
     public ParticleSystem confeti;
@@ -11,10 +11,10 @@ public class ScriptBotonFinalNivel : MonoBehaviour
     public float delay;
     [SerializeField] string _nextScene;
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Interactable")) //check the int value in layer manager(User Defined starts at 8) 
-        {
+        if (collision.CompareTag("Player"))
+            {
             Boton.GetComponent<MeshRenderer>().material = botonActivado;
             Instantiate(confeti, transform.position, Quaternion.identity);
             StartCoroutine(LoadNextScene(_nextScene));

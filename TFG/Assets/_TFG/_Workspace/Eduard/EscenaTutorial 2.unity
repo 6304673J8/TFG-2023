@@ -763,8 +763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSpeed: 4.33
   impulse: {x: 0, y: 18.46, z: 0}
-  dissolveMat: {fileID: 2100000, guid: f78710b959d888d459340915024e5281, type: 2}
-  Color: 0
+  canJump: 0
 --- !u!65 &291174235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -815,7 +814,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28354
+  m_Name: pb_Mesh33022
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1449,7 +1448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -4482,7 +4480,7 @@ GameObject:
   - component: {fileID: 1713983339}
   m_Layer: 0
   m_Name: CheckPoint (1)
-  m_TagString: Charco
+  m_TagString: Checkpoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4930,7 +4928,7 @@ GameObject:
   - component: {fileID: 1915869194}
   m_Layer: 0
   m_Name: CheckPoint
-  m_TagString: Charco
+  m_TagString: Checkpoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
