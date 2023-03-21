@@ -24,7 +24,7 @@ public class SlidersManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateValueOnChange(slider.value);
+        ResetSliderValue();
 
         slider.onValueChanged.AddListener(delegate
         {
@@ -35,7 +35,7 @@ public class SlidersManager : MonoBehaviour
     public void UpdateValueOnChange(float value)
     {
         if (volumeLabel != null)
-            volumeLabel.text = Mathf.Round(value * 100.0f).ToString() + "%";
+            volumeLabel.text = Mathf.Round(value * 100.0f).ToString();
         if (Settings.profile)
         {
             Settings.profile.SetAudioLevels(volumeName, value);

@@ -13,11 +13,11 @@ public class OptionsMenuManager : MonoBehaviour
     //Add Camera Settings
     //[Header("Camera")]
 
-    [Header("Audio")] 
+    /*[Header("Audio")] 
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _sfxSlider;
     [SerializeField] private TMP_InputField _musicInputField;
-    [SerializeField] private TMP_InputField _sfxInputField;
+    [SerializeField] private TMP_InputField _sfxInputField;*/
 
     [Header("Graphics")] 
     [SerializeField] private Toggle _fullScreenToggle;
@@ -67,11 +67,11 @@ public class OptionsMenuManager : MonoBehaviour
         _fullScreenToggle.onValueChanged.AddListener(SetFullScreenBool);
 
         //Music
-        _musicSlider.onValueChanged.AddListener(ChangeMusicVolumeSlider);
-        _sfxSlider.onValueChanged.AddListener(ChangeSfxVolumeSlider);
+        /*_musicSlider.onValueChanged.AddListener(ChangeMusicVolumeSlider);
+        _sfxSlider.onValueChanged.AddListener(ChangeSfxVolumeSlider);*/
 
-        _musicInputField.onValueChanged.AddListener(ChangeMusicVolumeInput);
-        _sfxInputField.onValueChanged.AddListener(ChangeSfxVolumeInput);
+       /* _musicInputField.onValueChanged.AddListener(ChangeMusicVolumeInput);
+        _sfxInputField.onValueChanged.AddListener(ChangeSfxVolumeInput);*/
     }
    
     #region CoolAnimationTest
@@ -111,12 +111,12 @@ public class OptionsMenuManager : MonoBehaviour
         //ToImplement Camera
         
         //Set Audio Values
-        _musicSlider.value = PlayerPrefs.GetFloat(_musicHash, 50);
-        _sfxSlider.value = PlayerPrefs.GetFloat(_sfxHash, 50);
+        /*_musicSlider.value = PlayerPrefs.GetFloat(_musicHash, 50);
+        _sfxSlider.value = PlayerPrefs.GetFloat(_sfxHash, 50);*/
 
         //Set Audio Input Values
-        _musicInputField.text = PlayerPrefs.GetFloat(_musicHash, 50).ToString();
-        _sfxInputField.text = PlayerPrefs.GetFloat(_sfxHash, 50).ToString();
+       /* _musicInputField.text = PlayerPrefs.GetFloat(_musicHash, 50).ToString();
+        _sfxInputField.text = PlayerPrefs.GetFloat(_sfxHash, 50).ToString();*/
 
         //Set full screen
         _isFullScreen = PlayerPrefs.GetInt("FullScreen", 0) == 1;
@@ -149,7 +149,7 @@ public class OptionsMenuManager : MonoBehaviour
     
     public void ChangeMusicVolumeInput(string _value)
     {
-        if (float.TryParse(_value, out float _musicVolume))
+        /*if (float.TryParse(_value, out float _musicVolume))
         {
             if (_musicVolume > 100)
             {
@@ -165,12 +165,12 @@ public class OptionsMenuManager : MonoBehaviour
             PlayerPrefs.SetFloat(_musicHash, _musicVolume);
             _musicSlider.value = _musicVolume;
             print(_musicVolume);
-        }
+        }*/
     }
     
     public void ChangeSfxVolumeInput(string _value)
     {
-        if (float.TryParse(_value, out float _sfxVolume))
+        /*if (float.TryParse(_value, out float _sfxVolume))
         {
             if (_sfxVolume > 100)
             {
@@ -186,22 +186,22 @@ public class OptionsMenuManager : MonoBehaviour
             PlayerPrefs.SetFloat(_sfxHash, _sfxVolume);
             _sfxSlider.value = _sfxVolume;
             print(_sfxVolume);
-        }
+        }*/
     }
     
     
     
     public void ChangeMusicVolumeSlider(float _value)
     {
-        PlayerPrefs.SetFloat(_musicHash, _musicSlider.value);
-        _musicInputField.text = _value.ToString();
+        /*PlayerPrefs.SetFloat(_musicHash, _musicSlider.value);
+        _musicInputField.text = _value.ToString();*/
         //AkSoundEngine.SetRTPCValue("Volume_Music", _musicSlider.value)
     }
     
     public void ChangeSfxVolumeSlider(float _value)
     {
-        PlayerPrefs.SetFloat(_sfxHash, _sfxSlider.value);
-        _sfxInputField.text = _value.ToString();
+        /*PlayerPrefs.SetFloat(_sfxHash, _sfxSlider.value);
+        _sfxInputField.text = _value.ToString();*/
         //AkSoundEngine.SetRTPCValue("Volume_SFX", _sfxSlider.value)
     }
     
