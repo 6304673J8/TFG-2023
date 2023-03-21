@@ -73,6 +73,8 @@ public class MenuPausa : MonoBehaviour
 
     public void volverMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 }
