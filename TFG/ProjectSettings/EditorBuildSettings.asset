@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_TFG/Scenes/2_TutorialSceneCinemachine.unity
     guid: ada9b1815728d52439af4923d091c8ff
-  - enabled: 1
-    path: Assets/_TFG/Scenes/3_GameScene.unity
-    guid: 16ad14c0dd59fd94fafcd14cdec796b4
   m_configObjects: {}
