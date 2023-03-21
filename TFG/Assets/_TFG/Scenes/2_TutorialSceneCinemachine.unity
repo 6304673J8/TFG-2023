@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.40988785, g: 0.45675117, b: 0.5754717, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 133347283e115d147a5fcce7f47a538f, type: 2}
   m_HaloStrength: 0.5
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0.765
+  m_ReflectionIntensity: 0.776
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1964370783}
-  m_IndirectSpecularColor: {r: 0.29689685, g: 0.5567783, b: 0.5603615, a: 0.765}
+  m_IndirectSpecularColor: {r: 0.30116597, g: 0.5647843, b: 0.56841904, a: 0.776}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2442,7 +2442,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh100682
+  m_Name: pb_Mesh50116
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7678,6 +7678,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d63e2a2c7963af640b2ac64935ec1d72,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d63e2a2c7963af640b2ac64935ec1d72,
         type: 3}
       propertyPath: m_Name
@@ -10136,7 +10141,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 4049
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.7661795e+11, z: 5.47e-43, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 0, z: 0, w: 3065874}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

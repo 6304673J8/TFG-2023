@@ -45,12 +45,12 @@ Material:
     m_Floats:
     - _Contraste: 0.054
     - _Metallic: 0
-    - _NoiseScale: -25.5
+    - _NoiseScale: -23.14
     - _Oclussion: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0
-    - _Transicion: 1.0000001
+    - _Transicion: 1
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
