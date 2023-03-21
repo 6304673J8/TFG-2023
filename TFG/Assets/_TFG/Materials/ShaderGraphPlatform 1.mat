@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShaderGraphTrampolin
+  m_Name: ShaderGraphPlatform 1
   m_Shader: {fileID: -6465566751694194690, guid: 72f320daa00dcc3489ba7d95b44db0a1,
     type: 3}
   m_ValidKeywords: []
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Textura_A:
-        m_Texture: {fileID: 2800000, guid: d67f930b995b37542827c0942f0e7dc7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0b343b179d2251243a8bbed3fe8e2773, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Textura_B:

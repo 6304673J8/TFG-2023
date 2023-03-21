@@ -11,6 +11,11 @@ public class ReturnColorsBack : MonoBehaviour
         characterMaterials = GetComponentsInChildren<Renderer>();
     }
 
+    public void GiveItBack()
+    {
+        ChangeMaterialSettings(0);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
