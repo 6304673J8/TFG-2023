@@ -8,6 +8,7 @@ public class MovimientoEnemy : MonoBehaviour
     public Transform[] allwayPoints;
     public float rotationSpeed = .5f, movementSpeed = 0.5f;
     public int currentTarget;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -14,7 +14,7 @@ public class ScriptBotonFinalNivel1_Azul : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player"))
-            {
+        {
             Boton.GetComponent<MeshRenderer>().material = botonActivado;
             Instantiate(confeti, transform.position, Quaternion.identity);
             StartCoroutine(LoadNextScene(_nextScene));

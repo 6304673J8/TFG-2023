@@ -5,17 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class ScriptBotonFinalNivel : MonoBehaviour
 {
-    public GameObject Boton;
     public ParticleSystem confeti;
     public Material botonActivado;
     public float delay;
     [SerializeField] string _nextScene;
+    [SerializeField] bool _activateByPlayer;
+    private Renderer _objectRenderer;
+
+    private void Start()
+    {
+        _objectRenderer = this.gameObject.GetComponent<Renderer>() ;
+    }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Interactable")) //check the int value in layer manager(User Defined starts at 8) 
+        Debug.Log("Colisiona");
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Interactable") && _activateByPlayer == false) //check the int value in layer manager(User Defined starts at 8) 
         {
-            Boton.GetComponent<MeshRenderer>().material = botonActivado;
+            _objectRenderer.material = botonActivado;
+            Instantiate(confeti, transform.position, Quaternion.identity);
+            StartCoroutine(LoadNextScene(_nextScene));
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") == true) //check the int value in layer manager(User Defined starts at 8) 
+        {
+            Debug.Log("Colisiona con objecto activable por jugador");
+            _objectRenderer.material = botonActivado;
             Instantiate(confeti, transform.position, Quaternion.identity);
             StartCoroutine(LoadNextScene(_nextScene));
         }
