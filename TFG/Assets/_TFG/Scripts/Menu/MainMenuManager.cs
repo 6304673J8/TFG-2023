@@ -33,7 +33,7 @@ public class MainMenuManager : MonoBehaviour
         _isOptionsActive = false;
         _isCreditsActive = false;
 
-        _playButton.onClick.AddListener(Play);
+        _playButton.onClick.AddListener(ToPlay);
         _optionsButton.onClick.AddListener(ToOptions);
         _creditsButton.onClick.AddListener(ToCredits);
         _exitButton.onClick.AddListener(ToExit);
@@ -41,7 +41,7 @@ public class MainMenuManager : MonoBehaviour
         _creditsBackButton.onClick.AddListener(ToGoBack);
     }
     
-    public void Play()
+    public void ToPlay()
     {
         //_bgMusic.StopMusic();
         SceneManager.LoadScene(_tutorialScene);
