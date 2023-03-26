@@ -873,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 8094579135672314197, guid: fb8a753f3aa64724d9f06c37e6d05374,
         type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
         type: 3}
@@ -883,7 +883,7 @@ PrefabInstance:
     - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.5
+      value: -4.1799994
       objectReference: {fileID: 0}
     - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
         type: 3}
@@ -893,7 +893,7 @@ PrefabInstance:
     - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.38
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
         type: 3}
@@ -4815,101 +4815,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5251445796572766660, guid: e9379513c3b68804f908f7c9d915ca78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9379513c3b68804f908f7c9d915ca78, type: 3}
---- !u!1001 &891991042
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6493678149542053778, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094579135672314197, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
-        type: 0}
-    - target: {fileID: 8094579135672314197, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_Name
-      value: Personaje_Bouba (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8094579135672314197, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 78
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.1799994
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.5234387
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871643192898434031, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977029788023906562, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: _maxJumpTime
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977029788023906562, guid: fb8a753f3aa64724d9f06c37e6d05374,
-        type: 3}
-      propertyPath: _maxJumpHeight
-      value: 1.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb8a753f3aa64724d9f06c37e6d05374, type: 3}
 --- !u!1 &934909160
 GameObject:
   m_ObjectHideFlags: 0

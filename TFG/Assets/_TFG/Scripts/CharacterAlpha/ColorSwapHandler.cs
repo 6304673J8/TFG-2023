@@ -30,6 +30,7 @@ public class ColorSwapHandler : MonoBehaviour
         switch (colorToSwap)
         {
             default:
+                Debug.Log("Ente Handle Color: white");
                 _colorPicked = ColorPicked.Color_White;
                 _testRenderer.GetComponent<Renderer>().material.color = Color.white;
                 _playerRenderer.material = _materials[3];
