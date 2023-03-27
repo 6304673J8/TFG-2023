@@ -36,19 +36,21 @@ public class PlataformasMoviles : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            collision.transform.SetParent(transform);
+            Debug.Log("Colliding Platform");
+            other.transform.SetParent(transform);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+            Debug.Log("Not Colliding Platform");
+            other.transform.SetParent(null);
         }
     }
 }

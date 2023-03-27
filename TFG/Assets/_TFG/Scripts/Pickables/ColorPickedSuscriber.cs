@@ -53,7 +53,7 @@ public class ColorPickedSuscriber : MonoBehaviour
         //Example If The Script Is In Another GameObject
         //ColorPickupEvents colorPickupEvents = (ColorPickupEvents)sender;
         ColorPickupEvents colorPickedEvents = GetComponent<ColorPickupEvents>();
-        colorPickedEvents.onColorRedPicked += ColorPickedEvent_OnColorPickedRed;
+        colorPickedEvents.onColorRedPicked -= ColorPickedEvent_OnColorPickedRed;
     }
 
     //Green
@@ -64,17 +64,17 @@ public class ColorPickedSuscriber : MonoBehaviour
         //Example If The Script Is In Another GameObject
         //ColorPickupEvents colorPickupEvents = (ColorPickupEvents)sender;
         ColorPickupEvents colorPickedEvents = GetComponent<ColorPickupEvents>();
-        colorPickedEvents.onColorGreenPicked += ColorPickedEvent_OnColorPickedGreen;
+        colorPickedEvents.onColorGreenPicked -= ColorPickedEvent_OnColorPickedGreen;
     }
 
     private void ColorPickedEvent_OnColorPickWhite(object sender, EventArgs e)
     {
-        Debug.Log("Color Picked Green!");
+        Debug.Log("Color Picked White!");
         ChangeMaterialSettings(3);
         //Example If The Script Is In Another GameObject
         //ColorPickupEvents colorPickupEvents = (ColorPickupEvents)sender;
         ColorPickupEvents colorPickedEvents = GetComponent<ColorPickupEvents>();
-        colorPickedEvents.onColorGreenPicked += ColorPickedEvent_OnColorPickWhite;
+        colorPickedEvents.onColorWhitePicked -= ColorPickedEvent_OnColorPickWhite;
     }
 
     #endregion

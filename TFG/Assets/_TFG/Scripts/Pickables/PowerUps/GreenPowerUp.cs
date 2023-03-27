@@ -8,6 +8,7 @@ public class GreenPowerUp : PowerUp, IPowerUp
 {
     protected override void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Picked Object");
         base.OnTriggerEnter(other);
         
         _playerPowerUp.PowerUpActivation(1);

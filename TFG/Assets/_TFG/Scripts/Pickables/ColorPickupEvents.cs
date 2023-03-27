@@ -99,7 +99,7 @@ public class ColorPickupEvents : MonoBehaviour
             LayerChanger(other, "WHITE");
             //_jumpad.enabled = false;
             _empujarCaja.enabled = false;
-            onColorGreenPicked?.Invoke(this, EventArgs.Empty);
+            onColorWhitePicked?.Invoke(this, EventArgs.Empty);
             //other.gameObject.SetActive(false);
         }
         else

@@ -7,8 +7,7 @@ public class EnemyBasic : MonoBehaviour
     public GameObject Objeto1; 
     private bool Muerto;
     private Cinemachine.CinemachineImpulseSource cameraShake;
-    public bool activable;
-
+    
     private void Awake()
     {
         cameraShake = GetComponent<Cinemachine.CinemachineImpulseSource>();
@@ -31,10 +30,6 @@ public class EnemyBasic : MonoBehaviour
                 
                 if (other.gameObject.layer == this.gameObject.layer)
                 {
-                    if(activable == true)
-                    {
-                        Objeto1.SetActive(false);
-                    }
                     Muerto = true;
                     Morir();
                 }
@@ -45,7 +40,6 @@ public class EnemyBasic : MonoBehaviour
     public void Morir()
     {
         cameraShake.GenerateImpulse();
-        if (activable != true)
-            Objeto1.GetComponent<ReturnColorToObject>().StartChanging();
+        Objeto1.GetComponent<ReturnColorToObject>().StartChanging();
     }
 }
