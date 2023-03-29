@@ -43,9 +43,10 @@ public class SceneSkipper : MonoBehaviour
 
     private void Update()
     {
-        if (_isNextPressed)
+        if (Input.GetKeyDown(KeyCode.Alpha9) || _isNextPressed)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        else if (_isPreviousPressed)
+        else if (Input.GetKeyDown(KeyCode.Alpha0) || _isPreviousPressed)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
+
 }
