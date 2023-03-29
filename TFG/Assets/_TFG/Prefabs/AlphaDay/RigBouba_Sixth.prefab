@@ -459,7 +459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6493678149542053782
 Transform:
   m_ObjectHideFlags: 0
@@ -761,18 +761,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471266a6384510e40bb1217c06618028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceForward: 1000
-  forceUp: 1000
   _isRunPressed: 0
   _isDashPressed: 0
-  _runBaseSpeed: 2
-  _runMultiplier: 4
+  _runBaseSpeed: 3
+  _runMultiplier: 4.5
   dashSpeed: 2
   dashTime: 0.25
   _isJumping: 0
   _isJumpPressed: 0
-  _maxJumpHeight: 1
-  _maxJumpTime: 0.5
+  _maxJumpHeight: 1.35
+  _maxJumpTime: 0.65
   _maxJumpCount: 1
 --- !u!143 &6493678150215780985
 CharacterController:
