@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyActivator : MonoBehaviour
 {
     public GameObject[] activateObject;
+    public bool canActivate;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,7 +25,13 @@ public class EnemyActivator : MonoBehaviour
     {
         for (int i = 0; i < activateObject.Length; i++)
         {
-            activateObject[i].SetActive(true);
+            if (canActivate == false)
+                activateObject[i].SetActive(true);
+            if (canActivate == true)
+            {
+                activateObject[0].GetComponent<ReturnColorToObject>().StartChanging();
+                activateObject[++i].SetActive(true);
+            }
         }
         Destroy(gameObject);
     }

@@ -10,11 +10,14 @@ public class GreenPowerUp : PowerUp, IPowerUp
     {
         Debug.Log("Picked Object");
         base.OnTriggerEnter(other);
-        
-        _playerPowerUp.PowerUpActivation(1);
-        _playerColorSwap.HandleColorSwap(1);
+
+        if (other.gameObject.CompareTag("Player") == true)
+        {
+            _playerPowerUp.PowerUpActivation(1);
+            _playerColorSwap.HandleColorSwap(1);
+        }
     }
-    
+
     public void PlaySFX()
     {
         throw new NotImplementedException();

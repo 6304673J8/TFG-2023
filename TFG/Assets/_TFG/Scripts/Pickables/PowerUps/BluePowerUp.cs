@@ -10,9 +10,12 @@ public class BluePowerUp : PowerUp, IPowerUp
     {
         Debug.Log("Picked Object");
         base.OnTriggerEnter(other);
-        
-        _playerPowerUp.PowerUpActivation(2);
-        _playerColorSwap.HandleColorSwap(2);
+
+        if (other.gameObject.CompareTag("Player") == true)
+        {
+            _playerPowerUp.PowerUpActivation(2);
+            _playerColorSwap.HandleColorSwap(2);
+        }
     }
     
     public void PlaySFX()
