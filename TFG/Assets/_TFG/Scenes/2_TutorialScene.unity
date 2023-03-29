@@ -10661,6 +10661,11 @@ PrefabInstance:
       propertyPath: impulse.y
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 3469287838015174083, guid: 0c66cf688597e9b4ba24705d84148759,
+        type: 3}
+      propertyPath: dissolveMat
+      value: 
+      objectReference: {fileID: 2100000, guid: f78710b959d888d459340915024e5281, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c66cf688597e9b4ba24705d84148759, type: 3}
 --- !u!4 &543450651597887070
