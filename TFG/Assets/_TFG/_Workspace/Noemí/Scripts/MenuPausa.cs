@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class MenuPausa : MonoBehaviour
 {
@@ -9,6 +10,27 @@ public class MenuPausa : MonoBehaviour
     [SerializeField] private GameObject menuPausa;
 
     private bool juegoPausado = false;
+
+    private PlayerInputs _playerInputs;
+
+    [SerializeField]
+    bool _isPausePressed;
+
+    private void Awake()
+    {
+        _playerInputs = new PlayerInputs();
+
+        //PAUSE
+        _playerInputs.CharacterControls.Pause.started += OnPauseInput;
+        _playerInputs.CharacterControls.Pause.canceled += OnPauseInput;
+    }
+
+    #region InputCallbackCtx
+    private void OnPauseInput(InputAction.CallbackContext context)
+    {
+        _isPausePressed = context.ReadValueAsButton();
+    }
+    #endregion
 
     void Start()
     {
@@ -18,7 +40,7 @@ public class MenuPausa : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) || _isPausePressed)
         {
             
             if(juegoPausado)

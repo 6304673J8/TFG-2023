@@ -71,6 +71,33 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""effe4fe1-209f-4175-8e49-04e92f38b299"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PreviousScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""500c75fe-7e9b-4d1c-8373-c059b095f376"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""66f3a5b0-5851-48ea-b7cf-fe850e9ce599"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -282,6 +309,61 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41e1010a-a9df-4526-9c34-cc5254d28677"",
+                    ""path"": ""<XInputController>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b271beff-5a36-4375-890d-c1517dc1a861"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb5e7569-9fab-4185-92fe-391533c05a0b"",
+                    ""path"": ""<XInputController>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65e5c1a0-468e-40fa-bead-8ca4c3d768c5"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14196227-cf2e-497e-bf48-be6f627504ee"",
+                    ""path"": ""<XInputController>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -295,6 +377,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_CharacterControls_Jump = m_CharacterControls.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControls_Run = m_CharacterControls.FindAction("Run", throwIfNotFound: true);
         m_CharacterControls_Interact = m_CharacterControls.FindAction("Interact", throwIfNotFound: true);
+        m_CharacterControls_Pause = m_CharacterControls.FindAction("Pause", throwIfNotFound: true);
+        m_CharacterControls_PreviousScene = m_CharacterControls.FindAction("PreviousScene", throwIfNotFound: true);
+        m_CharacterControls_NextScene = m_CharacterControls.FindAction("NextScene", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -359,6 +444,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_Jump;
     private readonly InputAction m_CharacterControls_Run;
     private readonly InputAction m_CharacterControls_Interact;
+    private readonly InputAction m_CharacterControls_Pause;
+    private readonly InputAction m_CharacterControls_PreviousScene;
+    private readonly InputAction m_CharacterControls_NextScene;
     public struct CharacterControlsActions
     {
         private @PlayerInputs m_Wrapper;
@@ -368,6 +456,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_CharacterControls_Jump;
         public InputAction @Run => m_Wrapper.m_CharacterControls_Run;
         public InputAction @Interact => m_Wrapper.m_CharacterControls_Interact;
+        public InputAction @Pause => m_Wrapper.m_CharacterControls_Pause;
+        public InputAction @PreviousScene => m_Wrapper.m_CharacterControls_PreviousScene;
+        public InputAction @NextScene => m_Wrapper.m_CharacterControls_NextScene;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -392,6 +483,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
+                @Pause.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPause;
+                @PreviousScene.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPreviousScene;
+                @PreviousScene.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPreviousScene;
+                @PreviousScene.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPreviousScene;
+                @NextScene.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnNextScene;
+                @NextScene.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnNextScene;
+                @NextScene.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnNextScene;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -411,6 +511,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @PreviousScene.started += instance.OnPreviousScene;
+                @PreviousScene.performed += instance.OnPreviousScene;
+                @PreviousScene.canceled += instance.OnPreviousScene;
+                @NextScene.started += instance.OnNextScene;
+                @NextScene.performed += instance.OnNextScene;
+                @NextScene.canceled += instance.OnNextScene;
             }
         }
     }
@@ -422,5 +531,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnPreviousScene(InputAction.CallbackContext context);
+        void OnNextScene(InputAction.CallbackContext context);
     }
 }
