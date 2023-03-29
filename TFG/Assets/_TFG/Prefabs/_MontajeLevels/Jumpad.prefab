@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c93a10c0a9a6749a2878dd4c1f7747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 8
-  impulse: {x: 2, y: 18, z: 1.58}
+  jumpSpeed: 10
+  impulse: {x: 2, y: 28, z: 1.58}
   canJump: 0
+  dissolveMat: {fileID: 0}

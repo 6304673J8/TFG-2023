@@ -4487,10 +4487,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4268983637222796591, guid: e4c5878650e064bc5b49a65e2db13466,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4268983637311953475, guid: e4c5878650e064bc5b49a65e2db13466,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268983637513841086, guid: e4c5878650e064bc5b49a65e2db13466,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4268983637632813304, guid: e4c5878650e064bc5b49a65e2db13466,
         type: 3}
@@ -5151,6 +5161,16 @@ PrefabInstance:
       propertyPath: _menuAnimationManager
       value: 
       objectReference: {fileID: 635435643}
+    - target: {fileID: 7706748506553680029, guid: e4c5878650e064bc5b49a65e2db13466,
+        type: 3}
+      propertyPath: m_Name
+      value: CreditsPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706748506553680030, guid: e4c5878650e064bc5b49a65e2db13466,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 925
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c5878650e064bc5b49a65e2db13466, type: 3}
 --- !u!114 &4268983638634141133 stripped

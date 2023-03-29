@@ -9,12 +9,11 @@ public class Jumpad : MonoBehaviour
     private Vector3 moveDirection;
     private Animator _animator;
     public bool canJump;
-    private Renderer _rend;
-    
+    public Material dissolveMat;
+
     private void Start()
     {
         canJump = false;
-        _rend = GetComponent<Renderer>();
         _animator = GetComponent<Animator>();
     }
 
@@ -39,10 +38,10 @@ public class Jumpad : MonoBehaviour
     private void OnTriggerStay(Collider collision)
     {
         AnimationAndMovementController player = collision.GetComponent<AnimationAndMovementController>();
-        if (collision.gameObject.layer == this.gameObject.layer)
+        Debug.Log("Entra En Trigger");
+        if (dissolveMat.GetFloat("_Transicion") >= 1)
         {
-            Debug.Log("Entra En Trigger");
-            if (_rend.material.GetFloat("_Transicion") > 0)
+            if (collision.gameObject.layer == this.gameObject.layer)
             {
                 Debug.Log("Entra En Material Analizator");
                 SetAnimationOn();
