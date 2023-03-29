@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546508960}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 178, z: -0}
+  m_LocalRotation: {x: 0.70840627, y: -0, z: -0, w: 0.70580494}
+  m_LocalPosition: {x: 0, y: 270, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4030665888161584617}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90.208984, y: 0, z: 0}
 --- !u!108 &1546508963
 Light:
   m_ObjectHideFlags: 0
@@ -42,13 +42,13 @@ Light:
   m_GameObject: {fileID: 1546508960}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.28235295, g: 0.72156864, b: 0.3372549, a: 1}
+  m_Color: {r: 0.023139905, g: 0.12486495, b: 0.9811321, a: 1}
   m_Intensity: 1
   m_Range: 2.13
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 64.49217
+  m_InnerSpotAngle: 54.85708
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4e6e9a9e693af47a8476d5f09c6246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boton: {fileID: 4369650427211779923}
   confeti: {fileID: 7482145490427650962, guid: 073caaebef2f99b4984830bd3dbfe424, type: 3}
   botonActivado: {fileID: 2100000, guid: 514ceb5e8ba3a2d42bf5161aa161f049, type: 2}
   delay: 2.4
   _nextScene: Level_1 1
+  _activateByPlayer: 0

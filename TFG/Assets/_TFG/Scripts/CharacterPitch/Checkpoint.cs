@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject flagCheckpoint;
     public bool Activated = false;
 
     #region Private Variables
@@ -72,6 +74,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            flagCheckpoint.GetComponent<ReturnColorToObject>().StartChanging();
             ActivateCheckPoint();
         }
     }

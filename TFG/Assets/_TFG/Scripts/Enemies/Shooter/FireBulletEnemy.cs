@@ -7,7 +7,7 @@ public class FireBulletEnemy : MonoBehaviour
     public GameObject _bullet;
     [SerializeField]
     private float _timer = 4f;
-    private float timerCount = 0f;
+    //private float timerCount = 0f;
 
     [SerializeField]
     private int _counter;
@@ -16,12 +16,6 @@ public class FireBulletEnemy : MonoBehaviour
     void Start()
     {
         StartCoroutine(FireBullet_CR());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator FireBullet_CR()

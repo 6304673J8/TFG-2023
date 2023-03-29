@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ParallaxScrolling : MonoBehaviour
 {
-    public float speed = 5f; // Speed at which the buildings move
+/*    public float speed = 5f; // Speed at which the buildings move
     public float loopDistance = 200f; // Distance at which the buildings loop
     
     [SerializeField]
@@ -11,8 +11,8 @@ public class ParallaxScrolling : MonoBehaviour
     private Vector3 startPosition; // Starting position of the buildings
     
     private float movementTime; // Time it takes for the buildings to loop
-    private float currentTime = 0; // Current time during the movement
-    private bool isMoving = true; // Flag to indicate if the buildings are moving
+    //private float currentTime = 0; // Current time during the movement
+    //private bool isMoving = true; // Flag to indicate if the buildings are moving
     [SerializeField]
     private bool _initiateOutOfBoundaries; //Activate For The Group Of Buildings That Will Instantiate Out Of Camera View
 
@@ -30,7 +30,7 @@ public class ParallaxScrolling : MonoBehaviour
     {
         transform.position = newPosition;
     }
-    /*void Update()
+    void Update()
     {
         if (isMoving)
         {

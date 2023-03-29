@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ColorPickupEvents : MonoBehaviour
 {
-    public event EventHandler onColorTouched;
+    //public event EventHandler onColorTouched;
     public event EventHandler onColorBluePicked;
     public event EventHandler onColorRedPicked;
     public event EventHandler onColorGreenPicked;

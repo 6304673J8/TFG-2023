@@ -96,14 +96,16 @@ public class OptionsMenuManager : MonoBehaviour
     #endregion
     public void AnyButtonClick()
     {
-        _animator.SetBool("menuIdle", false);
-        _animator.SetTrigger("menuSelected");
+        Debug.Log("Animate Bouba: Button Pressed");
+        //_animator.SetBool("menuIdle", false);
+        //_animator.SetTrigger("menuSelected");
     }
 
     public void GoBackButtonClick()
     {
-        _animator.SetBool("menuIdle", false);
-        _animator.SetTrigger("menuBack");
+        Debug.Log("Animate Bouba: Button Pressed");
+        //_animator.SetBool("menuIdle", false);
+        //_animator.SetTrigger("menuBack");
     }
 
     public void LoadSettings()
@@ -188,8 +190,6 @@ public class OptionsMenuManager : MonoBehaviour
             print(_sfxVolume);
         }*/
     }
-
-
 
     public void ChangeMusicVolumeSlider(float _value)
     {

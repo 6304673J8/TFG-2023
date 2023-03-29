@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShaderGraphPlatform
-  m_Shader: {fileID: -6465566751694194690, guid: 72f320daa00dcc3489ba7d95b44db0a1,
+  m_Name: Shader Graphs_CheckpointDissolveC
+  m_Shader: {fileID: -6465566751694194690, guid: 26eceec7377e6954a8ff0ad7ed5e046f,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Textura_A:
-        m_Texture: {fileID: 2800000, guid: 7f77ca82d147447829f8cf2f6b62c503, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6e1af2121c2e8484c89ce4cfe465147b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Textura_B:
@@ -43,19 +43,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Contraste: 0.054
+    - _Contraste: 0.01
     - _Metallic: 0
-    - _NoiseScale: -25.5
+    - _NoiseScale: 20
     - _Oclussion: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0
-    - _Transicion: 1.0000001
+    - _Transicion: 0
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &4630615204371456964
+--- !u!114 &8439798534156217574
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

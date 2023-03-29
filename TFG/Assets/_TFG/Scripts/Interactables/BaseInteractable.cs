@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class BaseInteractable : MonoBehaviour
 {
-    public static event EventHandler OnAnyColorPlacedHere;
+    //public static event EventHandler OnAnyColorPlacedHere;
     [SerializeField] private Transform interactableTransformPoint;
 
     //private ColorObject colorObject;
 
-    public static void ResetStaticData()
+    /*public static void ResetStaticData()
     {
         OnAnyColorPlacedHere = null;
-    }
+    }*/
 
     public virtual void Interact(AnimationAndMovementController player)
     {

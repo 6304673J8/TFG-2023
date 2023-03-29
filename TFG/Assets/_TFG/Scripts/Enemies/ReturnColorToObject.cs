@@ -16,7 +16,7 @@ public class ReturnColorToObject : MonoBehaviour
     private void Awake()
     {
         colorValue = 0f;
-        change = 0.1f;
+        change = 0.15f;
         delay = 0.1f;
     }
     void Start()

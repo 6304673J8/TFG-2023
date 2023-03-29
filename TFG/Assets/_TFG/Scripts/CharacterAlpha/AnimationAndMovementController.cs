@@ -39,8 +39,8 @@ public class AnimationAndMovementController : MonoBehaviour
     int _isIdleHash;
 
     //Dash Values
-    [SerializeField] float forceForward = 1000;
-    [SerializeField] float forceUp = 1000;
+    //[SerializeField] float forceForward = 1000;
+    //[SerializeField] float forceUp = 1000;
     
     //Variables To Store Player Input Values
     Vector2 _currentMovementInput;
@@ -90,7 +90,7 @@ public class AnimationAndMovementController : MonoBehaviour
     Dictionary<int, float> _initialJumpVelocities = new Dictionary<int, float>();
     Dictionary<int, float> _initialJumpGravities = new Dictionary<int, float>();
     Coroutine _currentJumpResetRoutine = null;
-    Coroutine _currentDashResetRoutine = null;
+    //Coroutine _currentDashResetRoutine = null;
 
     #region Initialize
 

@@ -9,9 +9,12 @@ public class RedPowerUp : PowerUp, IPowerUp
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        
-        _playerPowerUp.PowerUpActivation(0);
-        _playerColorSwap.HandleColorSwap(0);
+
+        if (other.gameObject.CompareTag("Player") == true)
+        {
+            _playerPowerUp.PowerUpActivation(0);
+            _playerColorSwap.HandleColorSwap(0);
+        }
     }
     
     public void PlaySFX()
